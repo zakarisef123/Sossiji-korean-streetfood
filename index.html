@@ -4,11 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sosiji 소시지 — Korean Streetfood</title>
-  <meta name="description" content="Sosiji — Korean streetfood : hot-dogs coréens, poulet frit, bibimbap et bulgogi. Le goût de Séoul, version street.">
+  <meta name="description" content="Sosiji, Korean streetfood : Crousty Chikin Bowl, poulet frit coréen, bibimbap et kimchi dogs. Place du Traité-de-Turin 3, Thônex. Ouvert du mardi au dimanche.">
   <link rel="icon" href="assets/img/logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Black+Han+Sans&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#f2605b">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:site_name" content="Sosiji Korean Streetfood">
+  <meta property="og:title" content="Sosiji 소시지 — Korean Streetfood">
+  <meta property="og:description" content="Crousty Chikin Bowl, poulet frit au gochujang, bibimbap et kimchi dogs. Le goût de Séoul, version street.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="style.css">
   <script>
     (function (d) {
@@ -33,6 +38,9 @@
     <p class="intro__hint">cliquez pour entrer · 들어오세요</p>
   </div>
 
+  <!-- ===== BANDEAU D'ANNONCE (texte dans config.js) ===== -->
+  <div class="announce" hidden><span class="announce__ko" aria-hidden="true">공지</span> <span class="announce__text"></span></div>
+
   <!-- ===== NAV ===== -->
   <header class="nav" id="top">
     <a href="#top" class="nav__brand" aria-label="Sosiji — accueil">
@@ -46,7 +54,8 @@
       <a href="#menu">Menu <span class="ko">메뉴</span></a>
       <a href="#histoire">Histoire <span class="ko">이야기</span></a>
       <a href="#seoul">Séoul <span class="ko">서울</span></a>
-      <a href="#infos" class="btn btn--small">Nous trouver</a>
+      <a href="#infos">Infos <span class="ko">정보</span></a>
+      <a class="btn btn--small js-order" hidden target="_blank" rel="noopener">Commander 🛵</a>
     </nav>
   </header>
 
@@ -64,14 +73,16 @@
             <span class="line outline">version street.</span>
           </h1>
           <p class="hero__lead">Crousty Chikin Bowl, poulet frit au gochujang, bibimbap et kimchi dogs. Comme dans les ruelles de Myeongdong — sans prendre l'avion.</p>
+          <p class="hero__status"><span class="open-status" hidden></span></p>
           <div class="hero__cta">
+            <a class="btn btn--order js-order" hidden target="_blank" rel="noopener">Commander <span class="ko">주문</span> 🛵</a>
             <a href="#menu" class="btn">Voir le menu</a>
             <a href="#infos" class="btn btn--ghost">Où nous trouver ?</a>
           </div>
         </div>
         <div class="hero__visual">
           <div class="cloud-frame">
-            <img src="assets/img/hotdog.webp" alt="Hot-dog coréen au kimchi, mayo et coriandre" width="840" height="757">
+            <img src="assets/img/kimchi-dog.webp" alt="Kimchi Dog : saucisse de volaille, kimchi maison et mayo au gochujang" width="462" height="457">
           </div>
           <div class="price-cloud" aria-label="Hot-dogs dès 6 francs 50">
             <small>DÈS CHF</small><strong>6.50</strong>
@@ -100,7 +111,8 @@
       <div class="section-head">
         <p class="tag tag--green">메뉴 · Menu</p>
         <h2>Ce qu'on sert <span class="ko">맛있어요!</span></h2>
-        <p>Poulet frit, bibimbap, kimchi dogs… des classiques coréens faits maison. Tous les soirs de 18:30 à 22:00.</p>
+        <p>Poulet frit, bibimbap, kimchi dogs… des classiques coréens faits maison. Midi et soir du mardi au vendredi, le soir le week-end.</p>
+        <p class="legend"><span>🌶️ épicé</span><span>🌱 végétarien</span><span>⭐ signature</span></p>
       </div>
 
       <div class="menu__grid">
@@ -109,7 +121,7 @@
           <div class="card__img"><img src="assets/img/crousty-chikin.webp" alt="Crousty Chikin Bowl : riz, poulet croustillant et sauces" loading="lazy"></div>
           <div class="card__body">
             <p class="card__ko">크리스피 치킨 볼</p>
-            <h3>Crousty Chikin Bowl</h3>
+            <h3>Crousty Chikin Bowl <i class="pic" title="Signature">⭐</i></h3>
             <p>Le bol généreux qui met tout le monde d'accord : une base de riz, du poulet ultra croustillant et ses sauces.</p>
             <p class="card__price">CHF 20.90</p>
           </div>
@@ -122,7 +134,7 @@
             <h3>Poulet frit</h3>
             <p class="variants__hint">Choisissez votre sauce 👇</p>
             <ul class="variants variants--switch">
-              <li class="is-active" tabindex="0" data-img="assets/img/poulet-traditional.webp"><span>Traditional <small>Recette authentique, légèrement épicée au gochujang 🌶️</small></span><b>11.90</b></li>
+              <li class="is-active" tabindex="0" data-img="assets/img/poulet-traditional.webp"><span>Traditional <i class="pic" title="Épicé">🌶️</i><small>Recette authentique, légèrement épicée au gochujang</small></span><b>11.90</b></li>
               <li tabindex="0" data-img="assets/img/poulet-sojail.webp"><span>Sojail <small>Sauce soja sucrée et ail, tout simplement !</small></span><b>11.90</b></li>
               <li tabindex="0" data-img="assets/img/poulet-lime-coco-curry.webp"><span>Lime Coco Curry <small>Lait de coco, curry et une petite touche acidulée</small></span><b>11.90</b></li>
             </ul>
@@ -138,7 +150,7 @@
             <p class="variants__hint">Bœuf ou tofu ? 👇</p>
             <ul class="variants variants--switch">
               <li class="is-active" tabindex="0" data-img="assets/img/bibimbap-boeuf.webp"><span>Bœuf</span><b>23.90</b></li>
-              <li tabindex="0" data-img="assets/img/bibimbap-tofu.webp"><span>Tofu <small>Végétarien 🌱</small></span><b>21.80</b></li>
+              <li tabindex="0" data-img="assets/img/bibimbap-tofu.webp"><span>Tofu <i class="pic" title="Végétarien">🌱</i><small>Végétarien</small></span><b>21.80</b></li>
             </ul>
           </div>
         </article>
@@ -184,8 +196,9 @@
             </ul>
           </div>
         </div>
-        <p class="board__note">Prix en CHF · Ouvert de 18:30 à 22:00</p>
+        <p class="board__note">Prix en CHF, TVA incluse · Informations sur les allergènes sur demande.</p>
       </div>
+      <p class="menu__order"><a class="btn btn--order js-order" hidden target="_blank" rel="noopener">Commander en ligne <span class="ko">주문하기</span> 🛵</a></p>
     </section>
 
     <div class="dancheong" aria-hidden="true"></div>
@@ -265,18 +278,21 @@
     <!-- ===== GALERIE ===== -->
     <section class="gallery">
       <div class="section-head">
-        <p class="tag tag--green">인스타그램 · Instagram</p>
+        <p class="tag tag--green">갤러리 · Galerie</p>
         <h2>Ça donne faim, non ?</h2>
       </div>
       <div class="gallery__grid">
-        <figure class="reveal"><img src="assets/img/poulet-frit.webp" alt="Poulet frit" loading="lazy"></figure>
-        <figure class="reveal"><img src="assets/img/bibimbap.webp" alt="Bibimbap" loading="lazy"></figure>
-        <figure class="reveal"><img src="assets/img/cheesesteak.webp" alt="Sandwich au bœuf et oignons caramélisés" loading="lazy"></figure>
-        <figure class="reveal"><img class="img-zoom" src="assets/img/hotdog.webp" alt="Hot-dog coréen" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/crousty-chikin.webp" alt="Crousty Chikin Bowl" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/poulet-traditional.webp" alt="Poulet frit Traditional" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/bibimbap-boeuf.webp" alt="Bibimbap au bœuf" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/kimchi-dog.webp" alt="Kimchi Dog" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/poulet-lime-coco-curry.webp" alt="Poulet frit Lime Coco Curry" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/bibimbap-tofu.webp" alt="Bibimbap au tofu" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/poulet-sojail.webp" alt="Poulet frit Sojail" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/hotdog-classique.webp" alt="Hot-dog Classique" loading="lazy"></figure>
       </div>
       <p class="gallery__cta">
-        <!-- Remplacer par le vrai lien Instagram -->
-        <a href="https://www.instagram.com/" class="btn" target="_blank" rel="noopener">Suivez-nous sur Instagram</a>
+        <a class="btn js-insta" hidden target="_blank" rel="noopener">Suivez-nous sur Instagram</a>
       </p>
     </section>
 
@@ -285,20 +301,28 @@
       <div class="infos__card reveal">
         <p class="tag">오시는 길 · Nous trouver</p>
         <h2>Passez nous voir</h2>
-        <!-- À compléter : adresse, horaires, téléphone -->
+        <!-- Les infos viennent de config.js -->
         <div class="infos__grid">
-          <div>
+          <div data-block="address" hidden>
             <h3>📍 Adresse</h3>
-            <p>Adresse à compléter</p>
+            <p data-cfg="address"></p>
+            <a class="infos__link js-maps" target="_blank" rel="noopener">Itinéraire →</a>
           </div>
           <div>
-            <h3>🕐 Horaires</h3>
-            <p>18:30 – 22:00</p>
+            <h3>🕐 Horaires <span class="open-status" hidden></span></h3>
+            <ul class="hours"></ul>
           </div>
-          <div>
+          <div data-block="contact" hidden>
             <h3>📞 Contact</h3>
-            <p>Téléphone / e-mail à compléter</p>
+            <p><a class="js-tel" hidden></a> <a class="js-mail" hidden></a></p>
           </div>
+          <div data-block="order" hidden>
+            <h3>🛵 Livraison</h3>
+            <p><a class="btn btn--small js-order" target="_blank" rel="noopener">Commander en ligne</a></p>
+          </div>
+        </div>
+        <div class="infos__map" hidden>
+          <iframe title="Carte : Sosiji Korean Streetfood" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </section>
@@ -311,10 +335,19 @@
     <div class="footer__row">
       <img src="assets/img/logo.png" alt="" width="72" height="72">
       <p>Korean Streetfood · Fait avec ♥ et beaucoup de gochujang</p>
+      <nav class="footer__links" aria-label="Liens">
+        <a class="js-order" hidden target="_blank" rel="noopener">Commander</a>
+        <a class="js-insta" hidden target="_blank" rel="noopener">Instagram</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="mentions-legales.html#confidentialite">Confidentialité</a>
+      </nav>
       <p>© <span id="year"></span> Sosiji</p>
     </div>
   </footer>
 
+  <a class="order-bar js-order" hidden target="_blank" rel="noopener">🛵 Commander <span class="ko">주문하기</span></a>
+
+  <script src="config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
