@@ -1,1 +1,284 @@
-# Sossiji-korean-streetfood
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sosiji 소시지 — Korean Streetfood</title>
+  <meta name="description" content="Sosiji — Korean streetfood : hot-dogs coréens, poulet frit, bibimbap et bulgogi. Le goût de Séoul, version street.">
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Black+Han+Sans&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="top">
+    <a href="#top" class="nav__brand" aria-label="Sosiji — accueil">
+      <img src="assets/img/logo.png" alt="Logo Sosiji Korean Streetfood" width="56" height="56">
+      <span class="nav__word">SOSIJI <span class="ko">소시지</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="#menu">Menu <span class="ko">메뉴</span></a>
+      <a href="#histoire">Histoire <span class="ko">이야기</span></a>
+      <a href="#seoul">Séoul <span class="ko">서울</span></a>
+      <a href="#infos" class="btn btn--small">Nous trouver</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero__bg-ko" aria-hidden="true">소시지</div>
+      <div class="hero__inner">
+        <div class="hero__text">
+          <p class="tag">안녕하세요! · Bienvenue</p>
+          <h1 class="hero__title">
+            <span class="line">Le goût</span>
+            <span class="line">de <em>Séoul</em>,</span>
+            <span class="line outline">version street.</span>
+          </h1>
+          <p class="hero__lead">Hot-dogs coréens, poulet frit croustillant, bibimbap et bulgogi. Comme dans les ruelles de Myeongdong — sans prendre l'avion.</p>
+          <div class="hero__cta">
+            <a href="#menu" class="btn">Voir le menu</a>
+            <a href="#infos" class="btn btn--ghost">Où nous trouver ?</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="cloud-frame">
+            <img src="assets/img/hotdog.webp" alt="Hot-dog coréen au kimchi, mayo et coriandre" width="840" height="757">
+          </div>
+          <div class="price-cloud" aria-label="Hot-dogs à 6 francs">
+            <small>CHF</small><strong>6</strong>
+          </div>
+          <span class="sparkle s1" aria-hidden="true"></span>
+          <span class="sparkle s2" aria-hidden="true"></span>
+          <span class="sparkle s3" aria-hidden="true"></span>
+          <div class="sticker sticker--heart" aria-hidden="true">사랑해 ♥</div>
+        </div>
+      </div>
+      <svg class="waves" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 30 Q 25 5 50 30 T 100 30 T 150 30 T 200 30 T 250 30 T 300 30 T 350 30 T 400 30 T 450 30 T 500 30 T 550 30 T 600 30 T 650 30 T 700 30 T 750 30 T 800 30 T 850 30 T 900 30 T 950 30 T 1000 30 T 1050 30 T 1100 30 T 1150 30 T 1200 30"/>
+      </svg>
+    </section>
+
+    <!-- ===== MARQUEE ===== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>HOT-DOGS ✦ 핫도그 ✦ CROUSTY CHIKIN ✦ 치킨 ✦ K-BURGER ✦ 버거 ✦ GIMBAP ✦ 김밥 ✦ BIBIMBAP ✦ 비빔밥 ✦ BULGOGI ✦ 불고기 ✦ KIMCHI ✦ 김치 ✦&nbsp;</span>
+        <span>HOT-DOGS ✦ 핫도그 ✦ CROUSTY CHIKIN ✦ 치킨 ✦ K-BURGER ✦ 버거 ✦ GIMBAP ✦ 김밥 ✦ BIBIMBAP ✦ 비빔밥 ✦ BULGOGI ✦ 불고기 ✦ KIMCHI ✦ 김치 ✦&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- ===== MENU ===== -->
+    <section class="menu" id="menu">
+      <div class="section-head">
+        <p class="tag tag--green">메뉴 · Menu</p>
+        <h2>Ce qu'on sert <span class="ko">맛있어요!</span></h2>
+        <p>Des classiques de la street food coréenne, faits maison, servis bien chauds.</p>
+      </div>
+
+      <div class="menu__grid">
+        <!-- Prix : seul le hot-dog (CHF 6) est connu. Remplacer "Prix sur place" par les vrais prix. -->
+        <article class="card card--coral reveal">
+          <div class="card__img"><img src="assets/img/hotdog.webp" alt="Hot-dog coréen" loading="lazy"></div>
+          <div class="card__body">
+            <p class="card__ko">핫도그</p>
+            <h3>Hot-Dogs</h3>
+            <p>Saucisse grillée, kimchi, mayo, sésame et coriandre fraîche dans un pain brioché.</p>
+            <p class="card__price">CHF 6</p>
+          </div>
+        </article>
+
+        <article class="card card--black reveal">
+          <div class="card__img"><img src="assets/img/poulet-frit.webp" alt="Poulet frit coréen sur riz" loading="lazy"></div>
+          <div class="card__body">
+            <p class="card__ko">치킨</p>
+            <h3>Poulet frit</h3>
+            <p>Poulet frit à la coréenne, double friture, laqué et parsemé de sésame, sur riz blanc.</p>
+            <p class="card__price">Prix sur place</p>
+          </div>
+        </article>
+
+        <article class="card card--cream reveal">
+          <div class="card__img"><img src="assets/img/bibimbap.webp" alt="Bibimbap au bœuf, œuf et légumes" loading="lazy"></div>
+          <div class="card__body">
+            <p class="card__ko">비빔밥</p>
+            <h3>Bibimbap</h3>
+            <p>Riz, bœuf mariné, champignons, épinards, carottes, œuf coulant et gochujang.</p>
+            <p class="card__price">Prix sur place</p>
+          </div>
+        </article>
+
+        <article class="card card--green reveal">
+          <div class="card__img"><img src="assets/img/cheesesteak.webp" alt="Sandwich bulgogi au fromage" loading="lazy"></div>
+          <div class="card__body">
+            <p class="card__ko">불고기 샌드위치</p>
+            <h3>Bulgogi Cheesesteak</h3>
+            <p>Bœuf bulgogi, oignons caramélisés, poivrons et fromage fondu dans un pain doré.</p>
+            <p class="card__price">Prix sur place</p>
+          </div>
+        </article>
+
+        <!-- Photos à déposer dans assets/img/ : burger.webp, crousty-chikin.webp, gimbap.webp -->
+        <article class="card card--cream reveal">
+          <span class="badge-new">NEW</span>
+          <div class="card__img"><img src="assets/img/burger.webp" alt="Burger au poulet frit coréen" loading="lazy" onerror="this.parentNode.classList.add('is-empty')"><span class="card__ph" aria-hidden="true">버거</span></div>
+          <div class="card__body">
+            <p class="card__ko">치킨 버거</p>
+            <h3>K-Burger</h3>
+            <p>Poulet frit laqué sauce coréenne, cheddar, oignon nouveau, salade croquante et piment gochugaru.</p>
+            <p class="card__price">Prix sur place</p>
+          </div>
+        </article>
+
+        <article class="card card--black reveal">
+          <span class="badge-new">NEW</span>
+          <div class="card__img"><img src="assets/img/crousty-chikin.webp" alt="Bol Crousty Chikin" loading="lazy" onerror="this.parentNode.classList.add('is-empty')"><span class="card__ph" aria-hidden="true">치킨</span></div>
+          <div class="card__body">
+            <p class="card__ko">크리스피 치킨</p>
+            <h3>Crousty Chikin</h3>
+            <p>Bol de riz, poulet ultra croustillant, sauce sucrée-piquante, mayo, oignon frit et sésame.</p>
+            <p class="card__price">Prix sur place</p>
+          </div>
+        </article>
+
+        <article class="card card--coral reveal">
+          <span class="badge-new badge-new--event">31 DÉC</span>
+          <div class="card__img"><img src="assets/img/gimbap.webp" alt="Assortiment de gimbap" loading="lazy" onerror="this.parentNode.classList.add('is-empty')"><span class="card__ph" aria-hidden="true">김밥</span></div>
+          <div class="card__body">
+            <p class="card__ko">김밥</p>
+            <h3>Gimbap</h3>
+            <p>Rouleaux coréens au riz et algue, garnis de légumes, œuf et viande — servis au menu spécial du 31 décembre.</p>
+            <p class="card__price">Menu spécial</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== HISTOIRE ===== -->
+    <section class="story" id="histoire">
+      <div class="story__stripes" aria-hidden="true"></div>
+      <div class="story__inner">
+        <div class="story__visual reveal">
+          <img src="assets/img/logo.png" alt="Logo Sosiji" class="story__logo" loading="lazy">
+          <div class="spiral spiral--coral" aria-hidden="true"></div>
+          <div class="spiral spiral--green" aria-hidden="true"></div>
+        </div>
+        <div class="story__text reveal">
+          <p class="tag">이야기 · Notre histoire</p>
+          <h2>소시지 <span>= saucisse.</span></h2>
+          <p>« Sosiji », c'est le mot coréen pour <strong>saucisse</strong>. Un clin d'œil aux stands de rue de Séoul, où l'on croque un hot-dog entre deux néons, la K-pop à fond dans les enceintes.</p>
+          <p>Chez nous, c'est la même énergie : des recettes coréennes généreuses, des sauces qui piquent juste ce qu'il faut, et une ambiance qui fait voyager.</p>
+          <ul class="chips">
+            <li>🌶️ Gochujang</li>
+            <li>🥬 Kimchi</li>
+            <li>🍗 Double friture</li>
+            <li>🔥 Fait minute</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEOUL VIBES ===== -->
+    <section class="seoul" id="seoul">
+      <div class="seoul__neon" aria-hidden="true">
+        <span class="neon neon--pink">서울</span>
+        <span class="neon neon--green">맛집</span>
+      </div>
+      <div class="section-head section-head--light">
+        <p class="tag tag--coral">서울 바이브 · Seoul vibes</p>
+        <h2>Un petit bout de Corée</h2>
+        <p>La cuisine de rue fait partie de l'âme de la Corée. Voici ce qui nous inspire.</p>
+      </div>
+      <div class="seoul__grid">
+        <div class="vibe reveal">
+          <span class="vibe__ko">포장마차</span>
+          <h3>Pojangmacha</h3>
+          <p>Les tentes orange de Séoul où l'on mange tard dans la nuit, au coude à coude.</p>
+        </div>
+        <div class="vibe reveal">
+          <span class="vibe__ko">케이팝</span>
+          <h3>K-Pop</h3>
+          <p>Couleurs flashy, énergie à 200 % et playlists qui tournent en boucle en cuisine.</p>
+        </div>
+        <div class="vibe reveal">
+          <span class="vibe__ko">명동</span>
+          <h3>Myeongdong</h3>
+          <p>Le quartier des stands de street food : hot-dogs, brochettes et poulet frit à chaque coin.</p>
+        </div>
+        <div class="vibe reveal">
+          <span class="vibe__ko">치맥</span>
+          <h3>Chimaek</h3>
+          <p>Chi(킨) + maek(주) : poulet frit + bière, le duo culte des soirées coréennes.</p>
+        </div>
+      </div>
+      <div class="hangul-lesson reveal">
+        <p class="hangul-lesson__title">Mini cours de coréen ✦</p>
+        <dl>
+          <div><dt>안녕하세요</dt><dd>annyeonghaseyo — bonjour</dd></div>
+          <div><dt>맛있어요</dt><dd>masisseoyo — c'est délicieux</dd></div>
+          <div><dt>감사합니다</dt><dd>gamsahamnida — merci</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===== GALERIE ===== -->
+    <section class="gallery">
+      <div class="section-head">
+        <p class="tag tag--green">인스타그램 · Instagram</p>
+        <h2>Ça donne faim, non ?</h2>
+      </div>
+      <div class="gallery__grid">
+        <figure class="reveal"><img src="assets/img/poulet-frit.webp" alt="Poulet frit" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/bibimbap.webp" alt="Bibimbap" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/cheesesteak.webp" alt="Bulgogi cheesesteak" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/hotdog.webp" alt="Hot-dog coréen" loading="lazy"></figure>
+      </div>
+      <p class="gallery__cta">
+        <!-- Remplacer par le vrai lien Instagram -->
+        <a href="https://www.instagram.com/" class="btn" target="_blank" rel="noopener">Suivez-nous sur Instagram</a>
+      </p>
+    </section>
+
+    <!-- ===== INFOS ===== -->
+    <section class="infos" id="infos">
+      <div class="infos__card reveal">
+        <p class="tag">오시는 길 · Nous trouver</p>
+        <h2>Passez nous voir</h2>
+        <!-- À compléter : adresse, horaires, téléphone -->
+        <div class="infos__grid">
+          <div>
+            <h3>📍 Adresse</h3>
+            <p>Adresse à compléter</p>
+          </div>
+          <div>
+            <h3>🕐 Horaires</h3>
+            <p>Horaires à compléter</p>
+          </div>
+          <div>
+            <h3>📞 Contact</h3>
+            <p>Téléphone / e-mail à compléter</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer__big" aria-hidden="true">SOSIJI 소시지</div>
+    <div class="footer__row">
+      <img src="assets/img/logo.png" alt="" width="72" height="72">
+      <p>Korean Streetfood · Fait avec ♥ et beaucoup de gochujang</p>
+      <p>© <span id="year"></span> Sosiji</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
