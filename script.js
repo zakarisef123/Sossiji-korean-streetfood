@@ -9,6 +9,8 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
    Infos du restaurant (config.js)
    ========================================================== */
 const CFG = window.SOSIJI || {};
+const EN = document.documentElement.lang === 'en';
+const t = (fr, en) => (EN ? en : fr);
 const show = (el, on = true) => { if (el) el.hidden = !on; };
 
 document.querySelectorAll('.js-order').forEach((a) => {
@@ -22,7 +24,6 @@ document.querySelectorAll('.js-insta').forEach((a) => {
 document.querySelectorAll('[data-cfg]').forEach((el) => {
   el.textContent = CFG[el.dataset.cfg] || '';
 });
-if (CFG.orderUrl) document.body.classList.add('has-order-bar');
 show(document.querySelector('[data-block="order"]'), !!CFG.orderUrl);
 
 // Adresse + carte
@@ -45,83 +46,86 @@ if (tel && CFG.phone) { tel.href = `tel:${CFG.phone.replace(/[^+\d]/g, '').repla
 if (mail && CFG.email) { mail.href = `mailto:${CFG.email}`; mail.textContent = CFG.email; show(mail); }
 show(document.querySelector('[data-block="contact"]'), !!(CFG.phone || CFG.email));
 
-// Horaires + « Ouvert maintenant » (heure de Genève)
-const schedule = Array.isArray(CFG.hours) ? CFG.hours : [];
-const hoursList = document.querySelector('.hours');
-const genevaNow = () => {
-  const parts = new Intl.DateTimeFormat('en-GB', {
-    timeZone: 'Europe/Zurich', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false,
-  }).formatToParts(new Date());
-  const get = (t) => parts.find((p) => p.type === t).value;
-  const dow = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
-  return { dow, minutes: (+get('hour') % 24) * 60 + +get('minute') };
-};
-const toMin = (t) => { const [h, m] = t.trim().split(/[:h]/); return +h * 60 + (+m || 0); };
-const today = genevaNow();
-if (hoursList) {
-  hoursList.innerHTML = schedule.map((row) => `
-    <li class="${row.dow.includes(today.dow) ? 'is-today' : ''}">
-      <span>${row.days}</span>
-      <b>${row.slots.length ? row.slots.join('<br>') : 'Fermé'}</b>
-    </li>`).join('');
-}
-function openStatus() {
-  const { dow, minutes } = genevaNow();
-  const row = schedule.find((r) => r.dow.includes(dow));
-  if (!row) return null;
-  for (const slot of row.slots) {
-    const [a, b] = slot.split(/[–-]/).map(toMin);
-    if (minutes >= a && minutes < b) {
-      return { open: true, text: b - minutes <= 30 ? `Ouvert · ferme à ${slot.split(/[–-]/)[1]}` : 'Ouvert maintenant' };
+// Horaires, prix et « Ouvert maintenant » : lus dans data/restaurant.json
+const Core = window.SosijiCore;
+window.SOSIJI_DATA = fetch('data/restaurant.json', { cache: 'no-cache' })
+  .then((r) => r.json())
+  .then((data) => {
+    const now = Core.zurichNow();
+
+    // Horaires
+    const hoursList = document.querySelector('.hours');
+    if (hoursList) {
+      hoursList.innerHTML = data.hours.map((row) => `
+        <li class="${row.dow.includes(now.dow) ? 'is-today' : ''}">
+          <span>${(EN && row.days_en) || row.days}</span>
+          <b>${row.slots.length ? row.slots.map((x) => x.replace('-', '–')).join('<br>') : t('Fermé', 'Closed')}</b>
+        </li>`).join('');
     }
-    if (minutes < a) return { open: false, text: `Fermé · ouvre à ${slot.split(/[–-]/)[0]}` };
-  }
-  return { open: false, text: 'Fermé pour le moment' };
-}
-const status = openStatus();
-if (status) {
-  document.querySelectorAll('.open-status').forEach((el) => {
-    el.textContent = status.text;
-    el.classList.toggle('is-open', status.open);
-    show(el);
-  });
-}
+
+    // Badge ouvert / fermé
+    const row = Core.todaySchedule(data, now);
+    let status = { open: false, text: t('Fermé pour le moment', 'Closed right now') };
+    for (const slot of row.slots) {
+      const [a, b] = Core.splitSlot(slot).map(Core.toMin);
+      if (now.minutes >= a && now.minutes < b) {
+        status = { open: true, text: b - now.minutes <= 30 ? t(`Ouvert · ferme à ${Core.fmt(b)}`, `Open · closes at ${Core.fmt(b)}`) : t('Ouvert maintenant', 'Open now') };
+        break;
+      }
+      if (now.minutes < a) { status = { open: false, text: t(`Fermé · ouvre à ${Core.fmt(a)}`, `Closed · opens at ${Core.fmt(a)}`) }; break; }
+    }
+    document.querySelectorAll('.open-status').forEach((el) => {
+      el.textContent = status.text;
+      el.classList.toggle('is-open', status.open);
+      show(el);
+    });
+
+    // Prix affichés = prix du fichier de données
+    const byId = new Map(data.items.map((i) => [i.id, i]));
+    document.querySelectorAll('[data-price]').forEach((el) => {
+      const item = byId.get(el.dataset.price);
+      if (item) el.textContent = (item.price / 100).toFixed(2);
+    });
+
+    // Données structurées pour Google (fiche restaurant)
+    const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const ld = {
+      '@context': 'https://schema.org',
+      '@type': 'Restaurant',
+      name: 'Sosiji Korean Streetfood',
+      alternateName: '소시지',
+      url: CFG.siteUrl || location.origin,
+      logo: new URL('assets/img/logo.png', location.href).href,
+      image: new URL('assets/img/og-image.jpg', location.href).href,
+      servesCuisine: ['Korean', 'Street food'],
+      priceRange: 'CHF 4–24',
+      hasMenu: `${CFG.siteUrl || location.origin}/#menu`,
+      acceptsReservations: false,
+      openingHoursSpecification: data.hours.flatMap((r) => r.slots.map((slot) => {
+        const [opens, closes] = Core.splitSlot(slot);
+        return { '@type': 'OpeningHoursSpecification', dayOfWeek: r.dow.map((d) => DAYS[d]), opens, closes };
+      })),
+    };
+    if (CFG.address) ld.address = CFG.address;
+    if (CFG.phone) ld.telephone = CFG.phone;
+    if (CFG.email) ld.email = CFG.email;
+    if (CFG.instagramUrl) ld.sameAs = [CFG.instagramUrl];
+    const tag = document.createElement('script');
+    tag.type = 'application/ld+json';
+    tag.textContent = JSON.stringify(ld);
+    document.head.appendChild(tag);
+    return data;
+  })
+  .catch((e) => { console.error('Données du restaurant indisponibles', e); return null; });
 
 // Bandeau d'annonce
 const announce = document.querySelector('.announce');
-if (announce && CFG.announcement) {
-  announce.querySelector('.announce__text').textContent = CFG.announcement;
+const announceText = (EN && CFG.announcement_en) || CFG.announcement;
+if (announce && announceText) {
+  announce.querySelector('.announce__text').textContent = announceText;
   show(announce);
 }
 
-// Données structurées pour Google (fiche restaurant)
-(() => {
-  const data = {
-    '@context': 'https://schema.org',
-    '@type': 'Restaurant',
-    name: 'Sosiji Korean Streetfood',
-    alternateName: '소시지',
-    url: location.origin + location.pathname,
-    logo: new URL('assets/img/logo.png', location.href).href,
-    image: new URL('assets/img/crousty-chikin.webp', location.href).href,
-    servesCuisine: ['Coréenne', 'Street food'],
-    priceRange: 'CHF 6–24',
-    hasMenu: new URL('#menu', location.href).href,
-  };
-  if (CFG.address) data.address = CFG.address;
-  if (CFG.phone) data.telephone = CFG.phone;
-  if (CFG.email) data.email = CFG.email;
-  if (CFG.instagramUrl) data.sameAs = [CFG.instagramUrl];
-  const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  data.openingHoursSpecification = schedule.flatMap((row) => row.slots.map((slot) => {
-    const [opens, closes] = slot.split(/[–-]/).map((t) => t.trim());
-    return { '@type': 'OpeningHoursSpecification', dayOfWeek: row.dow.map((d) => DAYS[d]), opens, closes };
-  }));
-  const ld = document.createElement('script');
-  ld.type = 'application/ld+json';
-  ld.textContent = JSON.stringify(data);
-  document.head.appendChild(ld);
-})();
 
 // Menu mobile
 const nav = document.querySelector('.nav');
@@ -220,7 +224,7 @@ if (!intro || root.classList.contains('no-intro')) {
   const word = intro.querySelector('.intro__word');
   wait(350)
     .then(() => typeHangul(word, '소시지', 150))
-    .then(() => { intro.classList.add('is-typed'); return wait(900); })
+    .then(() => { intro.classList.add('is-typed'); return wait(1400); })
     .then(open);
   setTimeout(open, 5000); // sécurité
 }
@@ -485,6 +489,7 @@ document.querySelectorAll('[data-switch]').forEach((card) => {
     li.addEventListener('mouseenter', () => select(li));
     li.addEventListener('click', () => select(li));
     li.addEventListener('keydown', (e) => {
+      if (e.target !== li) return;
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(li); }
     });
   });
