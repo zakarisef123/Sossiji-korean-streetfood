@@ -438,3 +438,49 @@ section { scroll-margin-top: 80px; }
   .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }
+
+/* ==========================================================
+   NÉON — écriture coréenne
+   ========================================================== */
+:root {
+  --glow-pink: 0 0 2px #fff, 0 0 6px var(--pink-neon), 0 0 14px var(--pink-neon), 0 0 28px var(--pink-neon);
+  --glow-mint: 0 0 2px #fff, 0 0 6px var(--mint-neon), 0 0 14px var(--mint-neon), 0 0 28px var(--mint-neon);
+  --glow-pink-soft: 0 0 4px rgba(255,79,163,.9), 0 0 12px rgba(255,79,163,.6);
+}
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 54%, 56%, 100% { opacity: 1; }
+  20%, 22%, 55% { opacity: .45; }
+}
+
+/* Fond clair : tube rose/vert lumineux */
+.nav__word .ko,
+.section-head h2 .ko { color: #ff3d97; text-shadow: var(--glow-pink-soft); }
+.nav__links a:not(.btn) .ko { color: #0fae84; text-shadow: 0 0 4px rgba(61,255,197,.9), 0 0 10px rgba(61,255,197,.6); }
+
+.card__ko { opacity: 1 !important; color: #fff; text-shadow: var(--glow-pink); font-size: 1.45rem !important; }
+.card--cream .card__ko { color: #ff3d97; text-shadow: var(--glow-pink-soft); }
+.card--green .card__ko, .card--black .card__ko { text-shadow: var(--glow-mint); }
+
+.neon-ko { font-weight: 400; color: #ff3d97; text-shadow: var(--glow-pink-soft); animation: neon-flicker 6s infinite; }
+.neon-ko--mint { color: #d6fff1; -webkit-text-stroke: 0; text-shadow: var(--glow-mint); animation-duration: 8s; }
+
+/* Gros 소시지 du hero : enseigne néon en tube */
+.hero__bg-ko {
+  color: transparent; opacity: .9;
+  -webkit-text-stroke: 3px #ffe3f0;
+  filter: drop-shadow(0 0 4px var(--pink-neon)) drop-shadow(0 0 14px var(--pink-neon)) drop-shadow(0 0 30px #ff2d8a);
+  animation: neon-flicker 7s infinite;
+}
+
+/* Bandeau défilant */
+.marquee .mk { font-family: var(--font-ko); font-weight: 400; color: #ffe3f0; text-shadow: var(--glow-pink); }
+.marquee .mk:nth-of-type(even) { color: #dcfff3; text-shadow: var(--glow-mint); }
+
+/* Section Séoul (fond nuit) : néon plein pot */
+.vibe__ko { color: #ffe3f0; text-shadow: var(--glow-pink); }
+.vibe:nth-child(even) .vibe__ko { color: #dcfff3; text-shadow: var(--glow-mint); }
+.vibe:hover .vibe__ko { animation: neon-flicker 1.2s 1; }
+.seoul .tag--coral { box-shadow: 0 0 12px rgba(255,79,163,.7); }
+
+/* Mini cours : tableau noir façon enseigne */
+.hangul-lesson dt { color: #0fae84; text-shadow: 0 0 4px rgba(61,255,197,.9), 0 0 12px rgba(61,255,197,.5); }
