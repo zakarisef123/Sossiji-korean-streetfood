@@ -10,8 +10,28 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Black+Han+Sans&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>
+    (function (d) {
+      d.classList.add('js');
+      try {
+        if (sessionStorage.getItem('sosiji-intro') || matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('no-intro');
+        else d.classList.add('intro-lock');
+      } catch (e) { d.classList.add('no-intro'); }
+    })(document.documentElement);
+  </script>
 </head>
 <body>
+
+  <!-- ===== INTRO : portes de hanok ===== -->
+  <div class="intro" aria-hidden="true">
+    <div class="intro__door intro__door--l"></div>
+    <div class="intro__door intro__door--r"></div>
+    <div class="intro__plaque">
+      <div class="intro__word">&nbsp;</div>
+      <p class="intro__sub">KOREAN STREETFOOD</p>
+    </div>
+    <p class="intro__hint">cliquez pour entrer · 들어오세요</p>
+  </div>
 
   <!-- ===== NAV ===== -->
   <header class="nav" id="top">
@@ -34,15 +54,16 @@
     <!-- ===== HERO ===== -->
     <section class="hero">
       <div class="hero__bg-ko" aria-hidden="true">소시지</div>
+      <canvas class="petals" aria-hidden="true"></canvas>
       <div class="hero__inner">
         <div class="hero__text">
-          <p class="tag">안녕하세요! · Bienvenue</p>
+          <p class="tag"><span class="ime" data-words="안녕하세요!|어서오세요!|맛있게 드세요!|배고파요?">안녕하세요!</span> · Bienvenue</p>
           <h1 class="hero__title">
             <span class="line">Le goût</span>
             <span class="line">de <em>Séoul</em>,</span>
             <span class="line outline">version street.</span>
           </h1>
-          <p class="hero__lead">Hot-dogs coréens, poulet frit croustillant, bibimbap et bulgogi. Comme dans les ruelles de Myeongdong — sans prendre l'avion.</p>
+          <p class="hero__lead">Crousty Chikin Bowl, poulet frit au gochujang, bibimbap et kimchi dogs. Comme dans les ruelles de Myeongdong — sans prendre l'avion.</p>
           <div class="hero__cta">
             <a href="#menu" class="btn">Voir le menu</a>
             <a href="#infos" class="btn btn--ghost">Où nous trouver ?</a>
@@ -52,13 +73,15 @@
           <div class="cloud-frame">
             <img src="assets/img/hotdog.webp" alt="Hot-dog coréen au kimchi, mayo et coriandre" width="840" height="757">
           </div>
-          <div class="price-cloud" aria-label="Hot-dogs à 6 francs">
-            <small>CHF</small><strong>6</strong>
+          <div class="price-cloud" aria-label="Hot-dogs dès 6 francs 50">
+            <small>DÈS CHF</small><strong>6.50</strong>
           </div>
           <span class="sparkle s1" aria-hidden="true"></span>
           <span class="sparkle s2" aria-hidden="true"></span>
           <span class="sparkle s3" aria-hidden="true"></span>
           <div class="sticker sticker--heart" aria-hidden="true">사랑해 ♥</div>
+          <div class="bubble bubble--a" aria-hidden="true">대박!</div>
+          <div class="bubble bubble--b" aria-hidden="true">ㅋㅋㅋ</div>
         </div>
       </div>
       <svg class="waves" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
@@ -66,12 +89,10 @@
       </svg>
     </section>
 
-    <!-- ===== MARQUEE ===== -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>HOT-DOGS ✦ <b class="mk">핫도그</b> ✦ CROUSTY CHIKIN ✦ <b class="mk">치킨</b> ✦ K-BURGER ✦ <b class="mk">버거</b> ✦ GIMBAP ✦ <b class="mk">김밥</b> ✦ BIBIMBAP ✦ <b class="mk">비빔밥</b> ✦ BULGOGI ✦ <b class="mk">불고기</b> ✦ KIMCHI ✦ <b class="mk">김치</b> ✦&nbsp;</span>
-        <span>HOT-DOGS ✦ <b class="mk">핫도그</b> ✦ CROUSTY CHIKIN ✦ <b class="mk">치킨</b> ✦ K-BURGER ✦ <b class="mk">버거</b> ✦ GIMBAP ✦ <b class="mk">김밥</b> ✦ BIBIMBAP ✦ <b class="mk">비빔밥</b> ✦ BULGOGI ✦ <b class="mk">불고기</b> ✦ KIMCHI ✦ <b class="mk">김치</b> ✦&nbsp;</span>
-      </div>
+    <!-- ===== RUBANS CROISÉS ===== -->
+    <div class="tapes" aria-hidden="true">
+      <div class="tape tape--coral"><div class="tape__track"><span>K-FOOD ✦ <b class="mk">한식</b> ✦ STREET FOOD ✦ <b class="mk">길거리 음식</b> ✦ SEOUL ✦ <b class="mk">서울</b> ✦ K-POP ✦ <b class="mk">케이팝</b> ✦ DAEBAK ✦ <b class="mk">대박</b> ✦ MASISSEOYO ✦ <b class="mk">맛있어요</b> ✦&nbsp;</span><span>K-FOOD ✦ <b class="mk">한식</b> ✦ STREET FOOD ✦ <b class="mk">길거리 음식</b> ✦ SEOUL ✦ <b class="mk">서울</b> ✦ K-POP ✦ <b class="mk">케이팝</b> ✦ DAEBAK ✦ <b class="mk">대박</b> ✦ MASISSEOYO ✦ <b class="mk">맛있어요</b> ✦&nbsp;</span></div></div>
+      <div class="tape tape--black"><div class="tape__track"><span>CROUSTY CHIKIN BOWL ✦ <b class="mk">치킨 볼</b> ✦ POULET FRIT ✦ <b class="mk">치킨</b> ✦ BIBIMBAP ✦ <b class="mk">비빔밥</b> ✦ KIMCHI DOG ✦ <b class="mk">김치</b> ✦ HOT-DOG ✦ <b class="mk">핫도그</b> ✦ GOCHUJANG ✦ <b class="mk">고추장</b> ✦&nbsp;</span><span>CROUSTY CHIKIN BOWL ✦ <b class="mk">치킨 볼</b> ✦ POULET FRIT ✦ <b class="mk">치킨</b> ✦ BIBIMBAP ✦ <b class="mk">비빔밥</b> ✦ KIMCHI DOG ✦ <b class="mk">김치</b> ✦ HOT-DOG ✦ <b class="mk">핫도그</b> ✦ GOCHUJANG ✦ <b class="mk">고추장</b> ✦&nbsp;</span></div></div>
     </div>
 
     <!-- ===== MENU ===== -->
@@ -79,18 +100,19 @@
       <div class="section-head">
         <p class="tag tag--green">메뉴 · Menu</p>
         <h2>Ce qu'on sert <span class="ko">맛있어요!</span></h2>
-        <p>Des classiques de la street food coréenne, faits maison, servis bien chauds.</p>
+        <p>Poulet frit, bibimbap, kimchi dogs… des classiques coréens faits maison. Tous les soirs de 18:30 à 22:00.</p>
       </div>
 
       <div class="menu__grid">
-        <!-- Prix : seul le hot-dog (CHF 6) est connu. Remplacer "Prix sur place" par les vrais prix. -->
+        <!-- Photo à déposer : assets/img/crousty-chikin.webp -->
         <article class="card card--coral reveal">
-          <div class="card__img"><img src="assets/img/hotdog.webp" alt="Hot-dog coréen" loading="lazy"></div>
+          <span class="badge-new">SIGNATURE</span>
+          <div class="card__img"><img src="assets/img/crousty-chikin.webp" alt="Crousty Chikin Bowl" loading="lazy" onerror="this.parentNode.classList.add('is-empty')"><span class="card__ph" aria-hidden="true">치킨</span></div>
           <div class="card__body">
-            <p class="card__ko">핫도그</p>
-            <h3>Hot-Dogs</h3>
-            <p>Saucisse grillée, kimchi, mayo, sésame et coriandre fraîche dans un pain brioché.</p>
-            <p class="card__price">CHF 6</p>
+            <p class="card__ko">크리스피 치킨 볼</p>
+            <h3>Crousty Chikin Bowl</h3>
+            <p>Le bol généreux qui met tout le monde d'accord : une base de riz, du poulet ultra croustillant et ses sauces.</p>
+            <p class="card__price">CHF 20.90</p>
           </div>
         </article>
 
@@ -99,8 +121,11 @@
           <div class="card__body">
             <p class="card__ko">치킨</p>
             <h3>Poulet frit</h3>
-            <p>Poulet frit à la coréenne, double friture, laqué et parsemé de sésame, sur riz blanc.</p>
-            <p class="card__price">Prix sur place</p>
+            <ul class="variants">
+              <li><span>Traditional <small>Recette authentique, légèrement épicée au gochujang 🌶️</small></span><b>11.90</b></li>
+              <li><span>Sojail <small>Sauce soja sucrée et ail, tout simplement !</small></span><b>11.90</b></li>
+              <li><span>Lime Coco Curry <small>Lait de coco, curry et une petite touche acidulée</small></span><b>11.90</b></li>
+            </ul>
           </div>
         </article>
 
@@ -109,56 +134,59 @@
           <div class="card__body">
             <p class="card__ko">비빔밥</p>
             <h3>Bibimbap</h3>
-            <p>Riz, bœuf mariné, champignons, épinards, carottes, œuf coulant et gochujang.</p>
-            <p class="card__price">Prix sur place</p>
+            <p>L'icône de la cuisine coréenne 🇰🇷</p>
+            <ul class="variants">
+              <li><span>Bœuf</span><b>23.90</b></li>
+              <li><span>Tofu <small>Végétarien 🌱</small></span><b>21.80</b></li>
+            </ul>
           </div>
         </article>
 
         <article class="card card--green reveal">
-          <div class="card__img"><img src="assets/img/cheesesteak.webp" alt="Sandwich bulgogi au fromage" loading="lazy"></div>
+          <div class="card__img"><img class="img-zoom" src="assets/img/hotdog.webp" alt="Kimchi Dog" loading="lazy"></div>
           <div class="card__body">
-            <p class="card__ko">불고기 샌드위치</p>
-            <h3>Bulgogi Cheesesteak</h3>
-            <p>Bœuf bulgogi, oignons caramélisés, poivrons et fromage fondu dans un pain doré.</p>
-            <p class="card__price">Prix sur place</p>
-          </div>
-        </article>
-
-        <!-- Photos à déposer dans assets/img/ : burger.webp, crousty-chikin.webp, gimbap.webp -->
-        <article class="card card--cream reveal">
-          <span class="badge-new">NEW</span>
-          <div class="card__img"><img src="assets/img/burger.webp" alt="Burger au poulet frit coréen" loading="lazy" onerror="this.parentNode.classList.add('is-empty')"><span class="card__ph" aria-hidden="true">버거</span></div>
-          <div class="card__body">
-            <p class="card__ko">치킨 버거</p>
-            <h3>K-Burger</h3>
-            <p>Poulet frit laqué sauce coréenne, cheddar, oignon nouveau, salade croquante et piment gochugaru.</p>
-            <p class="card__price">Prix sur place</p>
-          </div>
-        </article>
-
-        <article class="card card--black reveal">
-          <span class="badge-new">NEW</span>
-          <div class="card__img"><img src="assets/img/crousty-chikin.webp" alt="Bol Crousty Chikin" loading="lazy" onerror="this.parentNode.classList.add('is-empty')"><span class="card__ph" aria-hidden="true">치킨</span></div>
-          <div class="card__body">
-            <p class="card__ko">크리스피 치킨</p>
-            <h3>Crousty Chikin</h3>
-            <p>Bol de riz, poulet ultra croustillant, sauce sucrée-piquante, mayo, oignon frit et sésame.</p>
-            <p class="card__price">Prix sur place</p>
-          </div>
-        </article>
-
-        <article class="card card--coral reveal">
-          <span class="badge-new badge-new--event">31 DÉC</span>
-          <div class="card__img"><img src="assets/img/gimbap.webp" alt="Assortiment de gimbap" loading="lazy" onerror="this.parentNode.classList.add('is-empty')"><span class="card__ph" aria-hidden="true">김밥</span></div>
-          <div class="card__body">
-            <p class="card__ko">김밥</p>
-            <h3>Gimbap</h3>
-            <p>Rouleaux coréens au riz et algue, garnis de légumes, œuf et viande — servis au menu spécial du 31 décembre.</p>
-            <p class="card__price">Menu spécial</p>
+            <p class="card__ko">핫도그</p>
+            <h3>Hot-Dogs</h3>
+            <ul class="variants">
+              <li><span>Classique <small>Saucisse de volaille, ketchup, moutarde douce, oignons frits et relish maison</small></span><b>6.50</b></li>
+              <li><span>Kimchi Dog <small>Saucisse de volaille, kimchi maison, mayo au gochujang et cébettes</small></span><b>7.50</b></li>
+            </ul>
           </div>
         </article>
       </div>
+
+      <!-- Tableau façon pojangmacha (포장마차) -->
+      <div class="board reveal">
+        <div class="board__tent" aria-hidden="true"></div>
+        <div class="board__inner">
+          <div class="board__col">
+            <h3><span class="ko">사이드</span> Sides</h3>
+            <ul>
+              <li><span>Frites maison</span><b>6.00</b></li>
+              <li><span>Riz blanc</span><b>6.00</b></li>
+            </ul>
+          </div>
+          <div class="board__col">
+            <h3><span class="ko">음료</span> Soft drinks</h3>
+            <ul>
+              <li><span>Eau minérale plate <small>Henniez 50 cl</small></span><b>4.00</b></li>
+              <li><span>Eau minérale gazeuse <small>Henniez 50 cl</small></span><b>4.00</b></li>
+              <li><span>OISHI Green Tea Honey Lemon 🍋</span><b>5.00</b></li>
+              <li><span>OISHI Green Tea Original 🍃</span><b>5.00</b></li>
+            </ul>
+          </div>
+          <div class="board__col">
+            <h3><span class="ko">술</span> Alcools</h3>
+            <ul>
+              <li><span>Bière Asahi <small>33 cl</small></span><b>6.00</b></li>
+            </ul>
+          </div>
+        </div>
+        <p class="board__note">Prix en CHF · Ouvert de 18:30 à 22:00</p>
+      </div>
     </section>
+
+    <div class="dancheong" aria-hidden="true"></div>
 
     <!-- ===== HISTOIRE ===== -->
     <section class="story" id="histoire">
@@ -170,6 +198,7 @@
           <div class="spiral spiral--green" aria-hidden="true"></div>
         </div>
         <div class="story__text reveal">
+          <div class="seal" role="img" aria-label="Sceau coréen : 맛집 인증, restaurant approuvé"><span>맛</span><span>집</span><span>인</span><span>증</span></div>
           <p class="tag">이야기 · Notre histoire</p>
           <h2><b class="neon-ko">소시지</b> <span>= saucisse.</span></h2>
           <p>« Sosiji », c'est le mot coréen pour <strong>saucisse</strong>. Un clin d'œil aux stands de rue de Séoul, où l'on croque un hot-dog entre deux néons, la K-pop à fond dans les enceintes.</p>
@@ -184,8 +213,12 @@
       </div>
     </section>
 
+    <div class="dancheong dancheong--rev" aria-hidden="true"></div>
+
     <!-- ===== SEOUL VIBES ===== -->
     <section class="seoul" id="seoul">
+      <div class="lanterns" aria-hidden="true"></div>
+      <svg class="skyline" viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
       <div class="seoul__neon" aria-hidden="true">
         <span class="neon neon--pink">서울</span>
         <span class="neon neon--green">맛집</span>
@@ -220,9 +253,9 @@
       <div class="hangul-lesson reveal">
         <p class="hangul-lesson__title">Mini cours de coréen ✦</p>
         <dl>
-          <div><dt>안녕하세요</dt><dd>annyeonghaseyo — bonjour</dd></div>
-          <div><dt>맛있어요</dt><dd>masisseoyo — c'est délicieux</dd></div>
-          <div><dt>감사합니다</dt><dd>gamsahamnida — merci</dd></div>
+          <div><dt>안녕하세요 <button class="say" type="button" data-say="안녕하세요" aria-label="Écouter 안녕하세요" hidden>🔊</button></dt><dd>annyeonghaseyo — bonjour</dd></div>
+          <div><dt>맛있어요 <button class="say" type="button" data-say="맛있어요" aria-label="Écouter 맛있어요" hidden>🔊</button></dt><dd>masisseoyo — c'est délicieux</dd></div>
+          <div><dt>감사합니다 <button class="say" type="button" data-say="감사합니다" aria-label="Écouter 감사합니다" hidden>🔊</button></dt><dd>gamsahamnida — merci</dd></div>
         </dl>
       </div>
     </section>
@@ -236,8 +269,8 @@
       <div class="gallery__grid">
         <figure class="reveal"><img src="assets/img/poulet-frit.webp" alt="Poulet frit" loading="lazy"></figure>
         <figure class="reveal"><img src="assets/img/bibimbap.webp" alt="Bibimbap" loading="lazy"></figure>
-        <figure class="reveal"><img src="assets/img/cheesesteak.webp" alt="Bulgogi cheesesteak" loading="lazy"></figure>
-        <figure class="reveal"><img src="assets/img/hotdog.webp" alt="Hot-dog coréen" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/cheesesteak.webp" alt="Sandwich au bœuf et oignons caramélisés" loading="lazy"></figure>
+        <figure class="reveal"><img class="img-zoom" src="assets/img/hotdog.webp" alt="Hot-dog coréen" loading="lazy"></figure>
       </div>
       <p class="gallery__cta">
         <!-- Remplacer par le vrai lien Instagram -->
@@ -258,7 +291,7 @@
           </div>
           <div>
             <h3>🕐 Horaires</h3>
-            <p>Horaires à compléter</p>
+            <p>18:30 – 22:00</p>
           </div>
           <div>
             <h3>📞 Contact</h3>
@@ -270,6 +303,7 @@
   </main>
 
   <!-- ===== FOOTER ===== -->
+  <div class="dancheong" aria-hidden="true"></div>
   <footer class="footer">
     <div class="footer__big" aria-hidden="true">SOSIJI <span class="neon-ko neon-ko--mint">소시지</span></div>
     <div class="footer__row">
