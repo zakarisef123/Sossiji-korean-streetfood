@@ -822,3 +822,18 @@ section { scroll-margin-top: 80px; }
 .variants--switch li:hover, .variants--switch li:focus-visible { background: rgba(255, 255, 255, .08); outline: none; }
 .variants--switch li.is-active span { color: #ffe3f0; text-shadow: var(--glow-pink-soft); }
 .variants--switch li.is-active b { background: var(--coral); }
+
+/* sélection active lisible aussi sur carte claire / verte */
+.card--cream .variants--switch li.is-active span { color: #ff3d97; }
+.card--cream .variants--switch li:hover { background: rgba(0, 0, 0, .05); }
+.card--green .variants--switch li.is-active span { color: #dcfff3; text-shadow: var(--glow-mint); }
+
+/* vignettes des sides */
+.board li.has-thumb { align-items: center; }
+.board li.has-thumb img {
+  width: 54px; height: 54px; object-fit: cover; flex: none;
+  border-radius: 50%; border: 2px solid var(--cream);
+  box-shadow: 0 0 0 3px var(--coral);
+  transition: transform .3s;
+}
+.board li.has-thumb:hover img { transform: scale(1.25) rotate(-8deg); }

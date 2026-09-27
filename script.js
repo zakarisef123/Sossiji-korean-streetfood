@@ -358,7 +358,7 @@ document.querySelectorAll('[data-switch]').forEach((card) => {
     img.classList.add('is-swapping');
     setTimeout(() => {
       img.src = li.dataset.img;
-      img.alt = `Poulet frit ${name}`;
+      img.alt = `${card.dataset.switch} ${name}`;
       if (label) label.textContent = name;
       img.classList.remove('is-swapping');
     }, 200);

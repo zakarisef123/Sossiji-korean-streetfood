@@ -115,7 +115,7 @@
           </div>
         </article>
 
-        <article class="card card--black reveal" data-switch>
+        <article class="card card--black reveal" data-switch="Poulet frit">
           <div class="card__img"><img src="assets/img/poulet-traditional.webp" alt="Poulet frit Traditional" loading="lazy"><span class="card__label">Traditional</span></div>
           <div class="card__body">
             <p class="card__ko">치킨</p>
@@ -129,27 +129,29 @@
           </div>
         </article>
 
-        <article class="card card--cream reveal">
-          <div class="card__img"><img src="assets/img/bibimbap-boeuf.webp" alt="Bibimbap au bœuf, œuf et légumes" loading="lazy"></div>
+        <article class="card card--cream reveal" data-switch="Bibimbap">
+          <div class="card__img"><img src="assets/img/bibimbap-boeuf.webp" alt="Bibimbap Bœuf" loading="lazy"><span class="card__label">Bœuf</span></div>
           <div class="card__body">
             <p class="card__ko">비빔밥</p>
             <h3>Bibimbap</h3>
             <p>L'icône de la cuisine coréenne 🇰🇷</p>
-            <ul class="variants">
-              <li><span>Bœuf</span><b>23.90</b></li>
-              <li><span>Tofu <small>Végétarien 🌱</small></span><b>21.80</b></li>
+            <p class="variants__hint">Bœuf ou tofu ? 👇</p>
+            <ul class="variants variants--switch">
+              <li class="is-active" tabindex="0" data-img="assets/img/bibimbap-boeuf.webp"><span>Bœuf</span><b>23.90</b></li>
+              <li tabindex="0" data-img="assets/img/bibimbap-tofu.webp"><span>Tofu <small>Végétarien 🌱</small></span><b>21.80</b></li>
             </ul>
           </div>
         </article>
 
-        <article class="card card--green reveal">
-          <div class="card__img"><img class="img-zoom" src="assets/img/hotdog.webp" alt="Kimchi Dog" loading="lazy"></div>
+        <article class="card card--green reveal" data-switch="Hot-dog">
+          <div class="card__img"><img src="assets/img/hotdog-classique.webp" alt="Hot-dog Classique" loading="lazy"><span class="card__label">Classique</span></div>
           <div class="card__body">
             <p class="card__ko">핫도그</p>
             <h3>Hot-Dogs</h3>
-            <ul class="variants">
-              <li><span>Classique <small>Saucisse de volaille, ketchup, moutarde douce, oignons frits et relish maison</small></span><b>6.50</b></li>
-              <li><span>Kimchi Dog <small>Saucisse de volaille, kimchi maison, mayo au gochujang et cébettes</small></span><b>7.50</b></li>
+            <p class="variants__hint">Choisissez votre dog 👇</p>
+            <ul class="variants variants--switch">
+              <li class="is-active" tabindex="0" data-img="assets/img/hotdog-classique.webp"><span>Classique <small>Saucisse de volaille, ketchup, moutarde douce, oignons frits et relish maison</small></span><b>6.50</b></li>
+              <li tabindex="0" data-img="assets/img/kimchi-dog.webp"><span>Kimchi Dog <small>Saucisse de volaille, kimchi maison, mayo au gochujang et cébettes</small></span><b>7.50</b></li>
             </ul>
           </div>
         </article>
@@ -162,8 +164,8 @@
           <div class="board__col">
             <h3><span class="ko">사이드</span> Sides</h3>
             <ul>
-              <li><span>Frites maison</span><b>6.00</b></li>
-              <li><span>Riz blanc</span><b>6.00</b></li>
+              <li class="has-thumb"><img src="assets/img/frites-maison.webp" alt="Frites maison" loading="lazy"><span>Frites maison</span><b>6.00</b></li>
+              <li class="has-thumb"><img src="assets/img/riz-blanc.webp" alt="Riz blanc" loading="lazy"><span>Riz blanc</span><b>6.00</b></li>
             </ul>
           </div>
           <div class="board__col">
