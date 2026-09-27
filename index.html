@@ -104,10 +104,9 @@
       </div>
 
       <div class="menu__grid">
-        <!-- Photo à déposer : assets/img/crousty-chikin.webp -->
         <article class="card card--coral reveal">
           <span class="badge-new">SIGNATURE</span>
-          <div class="card__img"><img src="assets/img/crousty-chikin.webp" alt="Crousty Chikin Bowl" loading="lazy" onerror="this.parentNode.classList.add('is-empty')"><span class="card__ph" aria-hidden="true">치킨</span></div>
+          <div class="card__img"><img src="assets/img/crousty-chikin.webp" alt="Crousty Chikin Bowl : riz, poulet croustillant et sauces" loading="lazy"></div>
           <div class="card__body">
             <p class="card__ko">크리스피 치킨 볼</p>
             <h3>Crousty Chikin Bowl</h3>
@@ -116,21 +115,22 @@
           </div>
         </article>
 
-        <article class="card card--black reveal">
-          <div class="card__img"><img src="assets/img/poulet-frit.webp" alt="Poulet frit coréen sur riz" loading="lazy"></div>
+        <article class="card card--black reveal" data-switch>
+          <div class="card__img"><img src="assets/img/poulet-traditional.webp" alt="Poulet frit Traditional" loading="lazy"><span class="card__label">Traditional</span></div>
           <div class="card__body">
             <p class="card__ko">치킨</p>
             <h3>Poulet frit</h3>
-            <ul class="variants">
-              <li><span>Traditional <small>Recette authentique, légèrement épicée au gochujang 🌶️</small></span><b>11.90</b></li>
-              <li><span>Sojail <small>Sauce soja sucrée et ail, tout simplement !</small></span><b>11.90</b></li>
-              <li><span>Lime Coco Curry <small>Lait de coco, curry et une petite touche acidulée</small></span><b>11.90</b></li>
+            <p class="variants__hint">Choisissez votre sauce 👇</p>
+            <ul class="variants variants--switch">
+              <li class="is-active" tabindex="0" data-img="assets/img/poulet-traditional.webp"><span>Traditional <small>Recette authentique, légèrement épicée au gochujang 🌶️</small></span><b>11.90</b></li>
+              <li tabindex="0" data-img="assets/img/poulet-sojail.webp"><span>Sojail <small>Sauce soja sucrée et ail, tout simplement !</small></span><b>11.90</b></li>
+              <li tabindex="0" data-img="assets/img/poulet-lime-coco-curry.webp"><span>Lime Coco Curry <small>Lait de coco, curry et une petite touche acidulée</small></span><b>11.90</b></li>
             </ul>
           </div>
         </article>
 
         <article class="card card--cream reveal">
-          <div class="card__img"><img src="assets/img/bibimbap.webp" alt="Bibimbap au bœuf, œuf et légumes" loading="lazy"></div>
+          <div class="card__img"><img src="assets/img/bibimbap-boeuf.webp" alt="Bibimbap au bœuf, œuf et légumes" loading="lazy"></div>
           <div class="card__body">
             <p class="card__ko">비빔밥</p>
             <h3>Bibimbap</h3>

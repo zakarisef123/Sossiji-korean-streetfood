@@ -806,3 +806,19 @@ section { scroll-margin-top: 80px; }
 .card:hover .card__img .img-zoom, .gallery figure:hover .img-zoom { transform: scale(1.55); }
 .neon--green { top: 70px; bottom: auto; }
 @media (max-width: 820px) { .neon--green { top: auto; bottom: 170px; } }
+
+/* ---------- Poulet frit : changer de sauce change la photo ---------- */
+.card__img img { transition: transform .5s, opacity .25s; }
+.card__img img.is-swapping { opacity: 0; }
+.card__label {
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  font-family: var(--font-display); font-size: .75rem; text-transform: uppercase;
+  background: var(--coral); color: var(--ink);
+  border: 2px solid var(--ink); border-radius: 999px; padding: .3em .8em;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.variants__hint { font-size: .85rem; opacity: .7; margin-bottom: .4rem !important; }
+.variants--switch li { cursor: pointer; border-radius: 12px; padding: .6rem .6rem 0; margin: 0 -.6rem; transition: background .2s; }
+.variants--switch li:hover, .variants--switch li:focus-visible { background: rgba(255, 255, 255, .08); outline: none; }
+.variants--switch li.is-active span { color: #ffe3f0; text-shadow: var(--glow-pink-soft); }
+.variants--switch li.is-active b { background: var(--coral); }

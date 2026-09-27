@@ -342,3 +342,32 @@ if ('speechSynthesis' in window) {
     });
   });
 }
+
+/* ==========================================================
+   Poulet frit : survol / clic sur une sauce → photo correspondante
+   ========================================================== */
+document.querySelectorAll('[data-switch]').forEach((card) => {
+  const img = card.querySelector('.card__img img');
+  const label = card.querySelector('.card__label');
+  const items = card.querySelectorAll('[data-img]');
+  items.forEach((li) => new Image().src = li.dataset.img); // préchargement
+  const select = (li) => {
+    if (li.classList.contains('is-active')) return;
+    items.forEach((x) => x.classList.toggle('is-active', x === li));
+    const name = li.querySelector('span').firstChild.textContent.trim();
+    img.classList.add('is-swapping');
+    setTimeout(() => {
+      img.src = li.dataset.img;
+      img.alt = `Poulet frit ${name}`;
+      if (label) label.textContent = name;
+      img.classList.remove('is-swapping');
+    }, 200);
+  };
+  items.forEach((li) => {
+    li.addEventListener('mouseenter', () => select(li));
+    li.addEventListener('click', () => select(li));
+    li.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(li); }
+    });
+  });
+});
