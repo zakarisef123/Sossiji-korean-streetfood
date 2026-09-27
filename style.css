@@ -1112,3 +1112,7 @@ main { overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) { .intro__latin span { opacity: 1; transform: none; } }
 .hero .btn--order { background: var(--green); color: var(--cream); }
 .intro__hint { left: 50%; right: auto; transform: translateX(-50%); width: max-content; max-width: 90vw; background: #f6e7c8; border: 2px solid #2b1a10; border-radius: 999px; padding: .35em 1em; }
+.cart__preview { margin: 0 0 1rem; padding: .6rem .9rem; border-radius: 12px; font-weight: 700; font-size: .85rem; background: #fff4c2; border: 2px dashed #b48a00; }
+.cart__pay-logos { display: flex; justify-content: center; gap: .4rem; flex-wrap: wrap; margin: 0; }
+.cart__pay-logos span { font-size: .72rem; font-weight: 700; border: 2px solid var(--ink); border-radius: 6px; padding: .15em .5em; background: #fff; }
+.cart__pay-logos .twint { background: #000; color: #fff; border-color: #000; }

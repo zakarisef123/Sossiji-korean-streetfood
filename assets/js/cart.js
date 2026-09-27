@@ -19,6 +19,9 @@
   if (!drawer || !Core) return;
 
   let data = null;
+  // Aperçu : ?apercu dans l'adresse affiche le panier même si Stripe n'est pas encore configuré
+  const PREVIEW = new URLSearchParams(location.search).has('apercu');
+  let previewMode = false;
   let cart = {};
   try { cart = JSON.parse(localStorage.getItem(STORE)) || {}; } catch (e) { cart = {}; }
   const save = () => { try { localStorage.setItem(STORE, JSON.stringify(cart)); } catch (e) { /* stockage indisponible */ } };
@@ -74,7 +77,8 @@
 
   function renderSlots() {
     const select = form.elements.pickup;
-    const slots = Core.pickupSlots(data);
+    let slots = Core.pickupSlots(data);
+    if (previewMode && !slots.length) slots = Core.pickupSlots(data, { dow: 2, minutes: 0 });
     const closed = $('.cart__closed', drawer);
     const pay = $('.cart__pay', drawer);
     const p = priced();
@@ -187,6 +191,12 @@
       if (!/^[+0-9 ().-]{8,20}$/.test(f.phone.value.trim())) return fail(t('Indiquez un numéro de téléphone valide.', 'Please enter a valid phone number.'));
       if (p.hasAlcohol && !f.ageOk.checked) return fail(t('Confirmez avoir 16 ans ou plus pour la bière.', 'Please confirm you are 16 or older for beer.'));
 
+      if (previewMode) {
+        return fail(t(
+          `Aperçu : ici le client serait envoyé vers la page de paiement sécurisée (TWINT, carte, Apple Pay, Google Pay) pour ${chf(p.total)}. Le paiement sera actif dès que Stripe est configuré dans Netlify.`,
+          `Preview: the customer would now go to the secure payment page (TWINT, card, Apple Pay, Google Pay) for ${chf(p.total)}. Payment goes live once Stripe is set up in Netlify.`
+        ));
+      }
       pay.disabled = true;
       pay.textContent = t('Redirection vers le paiement…', 'Redirecting to payment…');
       try {
@@ -218,10 +228,20 @@
     .then((d) => {
       if (!d || !d.ordering || !d.ordering.enabled) return null;
       data = d;
-      return fetch('/.netlify/functions/checkout', { cache: 'no-store' }).then((r) => (r.ok ? r.json() : null));
+      return fetch('/.netlify/functions/checkout', { cache: 'no-store' })
+        .then((r) => (r.ok ? r.json() : null))
+        .catch(() => null);
     })
     .then((status) => {
-      if (!status || !status.enabled) return; // pas encore configuré → rien ne s'affiche
+      if (!data) return;
+      if (!status || !status.enabled) {
+        if (!PREVIEW) return; // pas encore configuré → rien ne s'affiche
+        previewMode = true;
+        const banner = document.createElement('p');
+        banner.className = 'cart__preview';
+        banner.textContent = t('Mode aperçu : paiement pas encore activé.', 'Preview mode: payment not active yet.');
+        $('.cart__body', drawer).prepend(banner);
+      }
       sanitize();
       wire();
       render();

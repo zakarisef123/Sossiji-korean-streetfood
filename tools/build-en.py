@@ -162,6 +162,7 @@ PAIRS = [
     ('<span>Remarque <small>(allergie, sans oignons…)</small></span>', '<span>Note <small>(allergy, no onions…)</small></span>'),
     ("J'ai 16 ans ou plus (bière). Une pièce d'identité peut être demandée au retrait.", "I'm 16 or older (beer). ID may be requested at pickup."),
     ('type="submit">Payer</button>', 'type="submit">Pay</button>'),
+    ('aria-label="Moyens de paiement acceptés"', 'aria-label="Accepted payment methods"'),
     ('À emporter : Place du Traité-de-Turin 3, Thônex. Paiement sécurisé par Stripe : TWINT, carte, Apple Pay, Google Pay.',
      'Pickup at Place du Traité-de-Turin 3, Thônex. Secure payment by Stripe: TWINT, card, Apple Pay, Google Pay.'),
 ]
