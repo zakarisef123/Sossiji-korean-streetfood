@@ -10,7 +10,7 @@
   },
   "hours": [
     { "days": "Lundi", "days_en": "Monday", "dow": [1], "slots": [] },
-    { "days": "Mardi – Vendredi", "days_en": "Tuesday – Friday", "dow": [2, 3, 4, 5], "slots": ["11:30-14:00", "18:30-22:00"] },
+    { "days": "Mardi à vendredi", "days_en": "Tuesday to Friday", "dow": [2, 3, 4, 5], "slots": ["11:30-14:00", "18:30-22:00"] },
     { "days": "Samedi", "days_en": "Saturday", "dow": [6], "slots": ["18:00-22:00"] },
     { "days": "Dimanche", "days_en": "Sunday", "dow": [0], "slots": ["18:00-21:30"] }
   ],

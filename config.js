@@ -1,5 +1,5 @@
 /* ==========================================================
-   SOSIJI — infos du restaurant
+   SOSIJI · infos du restaurant
    C'est le SEUL fichier à modifier pour mettre à jour les infos.
    Un champ laissé vide ('') = l'élément correspondant est masqué.
    ========================================================== */

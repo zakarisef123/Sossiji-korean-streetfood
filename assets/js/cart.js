@@ -1,5 +1,5 @@
 /* ==========================================================
-   Panier — commande à emporter avec paiement en ligne (Stripe)
+   Panier · commande à emporter avec paiement en ligne (Stripe)
    Tout reste masqué tant que le serveur ne confirme pas que
    Stripe et les notifications sont configurés.
    ========================================================== */

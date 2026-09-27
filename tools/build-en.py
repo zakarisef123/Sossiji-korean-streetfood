@@ -12,7 +12,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 
-# (français, anglais) — chaque texte français doit exister dans index.html
+# (français, anglais) : chaque texte français doit exister dans index.html
 PAIRS = [
     # ---- <head> ----
     ('<html lang="fr">', '<html lang="en">'),
@@ -26,7 +26,7 @@ PAIRS = [
 
     # ---- intro / nav ----
     ('cliquez pour entrer · 들어오세요', 'click to come in · 들어오세요'),
-    ('aria-label="Sosiji — accueil"', 'aria-label="Sosiji — home"'),
+    ('aria-label="Sosiji · accueil"', 'aria-label="Sosiji · home"'),
     ('aria-label="Ouvrir le menu"', 'aria-label="Open the menu"'),
     ('aria-label="Navigation principale"', 'aria-label="Main navigation"'),
     ('<a href="#histoire">Histoire <span class="ko">이야기</span></a>', '<a href="#histoire">Story <span class="ko">이야기</span></a>'),
@@ -42,8 +42,8 @@ PAIRS = [
     ('<span class="line">Le goût</span>', '<span class="line">The taste</span>'),
     ('<span class="line">de <em>Séoul</em>,</span>', '<span class="line">of <em>Seoul</em>,</span>'),
     ('<span class="line outline">version street.</span>', '<span class="line outline">street style.</span>'),
-    ("Crousty Chikin Bowl, poulet frit au gochujang, bibimbap et kimchi dogs. Comme dans les ruelles de Myeongdong — sans prendre l'avion.",
-     'Crousty Chikin Bowl, gochujang fried chicken, bibimbap and kimchi dogs. Just like the back streets of Myeongdong — no flight needed.'),
+    ("Crousty Chikin Bowl, poulet frit au gochujang, bibimbap et kimchi dogs. Comme dans les ruelles de Myeongdong, sans prendre l'avion.",
+     'Crousty Chikin Bowl, gochujang fried chicken, bibimbap and kimchi dogs. Just like the back streets of Myeongdong, no flight needed.'),
     ('hidden>Commander à emporter <span class="ko">포장</span></a>', 'hidden>Order for pickup <span class="ko">포장</span></a>'),
     ('<a href="#menu" class="btn">Voir le menu</a>', '<a href="#menu" class="btn">See the menu</a>'),
     ('rel="noopener">Livraison Uber Eats 🛵</a>', 'rel="noopener">Uber Eats delivery 🛵</a>'),
@@ -118,9 +118,9 @@ PAIRS = [
     ('aria-label="Écouter 안녕하세요"', 'aria-label="Listen to 안녕하세요"'),
     ('aria-label="Écouter 맛있어요"', 'aria-label="Listen to 맛있어요"'),
     ('aria-label="Écouter 감사합니다"', 'aria-label="Listen to 감사합니다"'),
-    ('annyeonghaseyo — bonjour', 'annyeonghaseyo — hello'),
-    ("masisseoyo — c'est délicieux", "masisseoyo — it's delicious"),
-    ('gamsahamnida — merci', 'gamsahamnida — thank you'),
+    ('annyeonghaseyo : bonjour', 'annyeonghaseyo: hello'),
+    ("masisseoyo : c'est délicieux", "masisseoyo: it's delicious"),
+    ('gamsahamnida : merci', 'gamsahamnida: thank you'),
 
     # ---- galerie ----
     ('갤러리 · Galerie', '갤러리 · Gallery'),
@@ -160,7 +160,7 @@ PAIRS = [
     ('<span>Prénom <span class="req">', '<span>First name <span class="req">'),
     ('<span>Téléphone <span class="req">', '<span>Phone <span class="req">'),
     ('<span>Remarque <small>(allergie, sans oignons…)</small></span>', '<span>Note <small>(allergy, no onions…)</small></span>'),
-    ("J'ai 16 ans ou plus (bière) — une pièce d'identité peut être demandée au retrait.", "I'm 16 or older (beer) — ID may be requested at pickup."),
+    ("J'ai 16 ans ou plus (bière). Une pièce d'identité peut être demandée au retrait.", "I'm 16 or older (beer). ID may be requested at pickup."),
     ('type="submit">Payer</button>', 'type="submit">Pay</button>'),
     ('À emporter : Place du Traité-de-Turin 3, Thônex. Paiement sécurisé par Stripe : TWINT, carte, Apple Pay, Google Pay.',
      'Pickup at Place du Traité-de-Turin 3, Thônex. Secure payment by Stripe: TWINT, card, Apple Pay, Google Pay.'),

@@ -22,7 +22,7 @@ exports.handler = async (event) => {
 
   const m = s.metadata || {};
   const code = orderCode(s.id);
-  const test = evt.livemode ? '' : '⚠️ TEST — pas un vrai paiement\n';
+  const test = evt.livemode ? '' : '⚠️ TEST : pas un vrai paiement\n';
   const text = [
     `${test}🔔 NOUVELLE COMMANDE #${code}`,
     `🕐 Retrait : ${m.pickup || '?'}`,
