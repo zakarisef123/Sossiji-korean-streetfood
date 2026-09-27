@@ -85,10 +85,10 @@
     pay.disabled = !slots.length;
     closed.hidden = !!slots.length;
     if (!slots.length) {
-      const next = Core.nextOpening(data);
+      const next = Core.nextOpening(data, undefined, EN ? 'en' : 'fr');
       closed.textContent = t(
         `La commande en ligne est fermée pour le moment.${next ? ` Retour ${next}.` : ''}`,
-        `Online ordering is closed right now.${next ? ` Back ${next.replace("aujourd'hui", 'today').replace('demain', 'tomorrow')}.` : ''}`
+        `Online ordering is closed right now.${next ? ` Back ${next}.` : ''}`
       );
     }
     pay.textContent = p ? t(`Payer ${chf(p.total)}`, `Pay ${chf(p.total)}`) : t('Payer', 'Pay');

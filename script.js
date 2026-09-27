@@ -224,7 +224,7 @@ if (!intro || root.classList.contains('no-intro')) {
   const word = intro.querySelector('.intro__word');
   wait(350)
     .then(() => typeHangul(word, '소시지', 150))
-    .then(() => { intro.classList.add('is-typed'); return wait(900); })
+    .then(() => { intro.classList.add('is-typed'); return wait(1400); })
     .then(open);
   setTimeout(open, 5000); // sécurité
 }

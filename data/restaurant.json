@@ -15,20 +15,20 @@
     { "days": "Dimanche", "days_en": "Sunday", "dow": [0], "slots": ["18:00-21:30"] }
   ],
   "items": [
-    { "id": "crousty-bowl", "name": "Crousty Chikin Bowl", "price": 2090, "available": true },
-    { "id": "poulet-traditional", "name": "Poulet frit Traditional", "price": 1190, "available": true },
-    { "id": "poulet-sojail", "name": "Poulet frit Sojail", "price": 1190, "available": true },
-    { "id": "poulet-lime-coco-curry", "name": "Poulet frit Lime Coco Curry", "price": 1190, "available": true },
-    { "id": "bibimbap-boeuf", "name": "Bibimbap bœuf", "price": 2390, "available": true },
-    { "id": "bibimbap-tofu", "name": "Bibimbap tofu", "price": 2180, "available": true },
-    { "id": "hotdog-classique", "name": "Hot-dog Classique", "price": 650, "available": true },
-    { "id": "kimchi-dog", "name": "Kimchi Dog", "price": 750, "available": true },
-    { "id": "frites", "name": "Frites maison", "price": 600, "available": true },
-    { "id": "riz", "name": "Riz blanc", "price": 600, "available": true },
-    { "id": "eau-plate", "name": "Eau minérale plate 50 cl", "price": 400, "available": true },
-    { "id": "eau-gazeuse", "name": "Eau minérale gazeuse 50 cl", "price": 400, "available": true },
-    { "id": "oishi-honey-lemon", "name": "OISHI Green Tea Honey Lemon", "price": 500, "available": true },
-    { "id": "oishi-original", "name": "OISHI Green Tea Original", "price": 500, "available": true },
-    { "id": "asahi", "name": "Bière Asahi 33 cl", "price": 600, "available": true, "alcohol": true }
+    { "id": "crousty-bowl", "name": "Crousty Chikin Bowl", "name_en": "Crousty Chikin Bowl", "price": 2090, "available": true },
+    { "id": "poulet-traditional", "name": "Poulet frit Traditional", "name_en": "Fried chicken Traditional", "price": 1190, "available": true },
+    { "id": "poulet-sojail", "name": "Poulet frit Sojail", "name_en": "Fried chicken Sojail", "price": 1190, "available": true },
+    { "id": "poulet-lime-coco-curry", "name": "Poulet frit Lime Coco Curry", "name_en": "Fried chicken Lime Coco Curry", "price": 1190, "available": true },
+    { "id": "bibimbap-boeuf", "name": "Bibimbap bœuf", "name_en": "Beef bibimbap", "price": 2390, "available": true },
+    { "id": "bibimbap-tofu", "name": "Bibimbap tofu", "name_en": "Tofu bibimbap", "price": 2180, "available": true },
+    { "id": "hotdog-classique", "name": "Hot-dog Classique", "name_en": "Classic hot-dog", "price": 650, "available": true },
+    { "id": "kimchi-dog", "name": "Kimchi Dog", "name_en": "Kimchi Dog", "price": 750, "available": true },
+    { "id": "frites", "name": "Frites maison", "name_en": "Homemade fries", "price": 600, "available": true },
+    { "id": "riz", "name": "Riz blanc", "name_en": "White rice", "price": 600, "available": true },
+    { "id": "eau-plate", "name": "Eau minérale plate 50 cl", "name_en": "Still mineral water 50 cl", "price": 400, "available": true },
+    { "id": "eau-gazeuse", "name": "Eau minérale gazeuse 50 cl", "name_en": "Sparkling mineral water 50 cl", "price": 400, "available": true },
+    { "id": "oishi-honey-lemon", "name": "OISHI Green Tea Honey Lemon", "name_en": "OISHI Green Tea Honey Lemon", "price": 500, "available": true },
+    { "id": "oishi-original", "name": "OISHI Green Tea Original", "name_en": "OISHI Green Tea Original", "price": 500, "available": true },
+    { "id": "asahi", "name": "Bière Asahi 33 cl", "name_en": "Asahi beer 33 cl", "price": 600, "available": true, "alcohol": true }
   ]
 }

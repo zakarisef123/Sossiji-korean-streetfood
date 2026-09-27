@@ -47,7 +47,7 @@
   }
 
   // Prochaine ouverture (pour afficher « Commandes à nouveau possibles … »)
-  function nextOpening(data, now = zurichNow()) {
+  function nextOpening(data, now = zurichNow(), lang = 'fr') {
     for (let d = 0; d < 8; d++) {
       const dow = (now.dow + d) % 7;
       const row = (data.hours || []).find((r) => r.dow.includes(dow));
@@ -55,6 +55,10 @@
       for (const slot of row.slots) {
         const start = toMin(splitSlot(slot)[0]);
         if (d > 0 || start > now.minutes) {
+          if (lang === 'en') {
+            const label = d === 0 ? 'today' : d === 1 ? 'tomorrow' : `on ${['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dow]}`;
+            return `${label} at ${fmt(start)}`;
+          }
           const label = d === 0 ? "aujourd'hui" : d === 1 ? 'demain' : ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'][dow];
           return `${label} à ${fmt(start)}`;
         }

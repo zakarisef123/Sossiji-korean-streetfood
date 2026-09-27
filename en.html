@@ -1,0 +1,405 @@
+<!doctype html>
+<!-- Fichier généré par tools/build-en.py depuis index.html : ne pas modifier à la main. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sosiji 소시지 — Korean Streetfood</title>
+  <meta name="description" content="Sosiji, Korean street food in Thônex (Geneva): Crousty Chikin Bowl, Korean fried chicken, bibimbap and kimchi dogs. Place du Traité-de-Turin 3. Open Tuesday to Sunday.">
+  <link rel="icon" href="assets/img/logo.png">
+  <meta name="theme-color" content="#f2605b">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:site_name" content="Sosiji Korean Streetfood">
+  <meta property="og:title" content="Sosiji 소시지 — Korean Streetfood">
+  <meta property="og:description" content="Crousty Chikin Bowl, gochujang fried chicken, bibimbap and kimchi dogs. The taste of Seoul, street style.">
+  <meta property="og:url" content="https://sosiji.netlify.app/en">
+  <meta property="og:image" content="https://sosiji.netlify.app/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://sosiji.netlify.app/en">
+  <link rel="alternate" hreflang="fr" href="https://sosiji.netlify.app/">
+  <link rel="alternate" hreflang="en" href="https://sosiji.netlify.app/en">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function (d) {
+      d.classList.add('js');
+      try {
+        if (sessionStorage.getItem('sosiji-intro') || matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('no-intro');
+        else d.classList.add('intro-lock');
+      } catch (e) { d.classList.add('no-intro'); }
+    })(document.documentElement);
+  </script>
+</head>
+<body>
+
+  <!-- ===== INTRO : portes de hanok ===== -->
+  <div class="intro" aria-hidden="true">
+    <div class="intro__door intro__door--l"></div>
+    <div class="intro__door intro__door--r"></div>
+    <div class="intro__plaque">
+      <div class="intro__word">&nbsp;</div>
+      <p class="intro__latin" aria-label="Sosiji"><span>S</span><span>O</span><span>S</span><span>I</span><span>J</span><span>I</span></p>
+      <p class="intro__sub">KOREAN STREETFOOD</p>
+    </div>
+    <p class="intro__hint">click to come in · 들어오세요</p>
+  </div>
+
+  <!-- ===== BANDEAU D'ANNONCE (texte dans config.js) ===== -->
+  <div class="announce" hidden><span class="announce__ko" aria-hidden="true">공지</span> <span class="announce__text"></span></div>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="top">
+    <a href="#top" class="nav__brand" aria-label="Sosiji — home">
+      <img src="assets/img/logo.png" alt="Logo Sosiji Korean Streetfood" width="56" height="56">
+      <span class="nav__word">SOSIJI <span class="ko">소시지</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Open the menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav__links" aria-label="Main navigation">
+      <a href="#menu">Menu <span class="ko">메뉴</span></a>
+      <a href="#histoire">Story <span class="ko">이야기</span></a>
+      <a href="#seoul">Seoul <span class="ko">서울</span></a>
+      <a href="#infos">Info <span class="ko">정보</span></a>
+      <a class="nav__lang" href="./" hreflang="fr" lang="fr" aria-label="Version française">FR</a>
+      <a class="nav__delivery js-order" hidden target="_blank" rel="noopener">Delivery 🛵</a>
+      <button class="btn btn--small js-cart-open" type="button" hidden>🛒 Order</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero__bg-ko" aria-hidden="true">소시지</div>
+      <canvas class="petals" aria-hidden="true"></canvas>
+      <div class="hero__inner">
+        <div class="hero__text">
+          <p class="tag"><span class="ime" data-words="안녕하세요!|어서오세요!|맛있게 드세요!|배고파요?">안녕하세요!</span> · Welcome</p>
+          <h1 class="hero__title">
+            <span class="line">The taste</span>
+            <span class="line">of <em>Seoul</em>,</span>
+            <span class="line outline">street style.</span>
+          </h1>
+          <p class="hero__lead">Crousty Chikin Bowl, gochujang fried chicken, bibimbap and kimchi dogs. Just like the back streets of Myeongdong — no flight needed.</p>
+          <p class="hero__status"><span class="open-status" hidden></span></p>
+          <div class="hero__cta">
+            <a href="#menu" class="btn btn--order js-takeaway" hidden>Order for pickup <span class="ko">포장</span></a>
+            <a href="#menu" class="btn">See the menu</a>
+            <a class="btn btn--ghost js-order" hidden target="_blank" rel="noopener">Uber Eats delivery 🛵</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="cloud-frame">
+            <img src="assets/img/kimchi-dog.webp" alt="Kimchi Dog: chicken sausage, homemade kimchi and gochujang mayo" width="462" height="457">
+          </div>
+          <div class="price-cloud" aria-label="Hot-dogs from 6.50 francs">
+            <small>FROM CHF</small><strong>6.50</strong>
+          </div>
+          <span class="sparkle s1" aria-hidden="true"></span>
+          <span class="sparkle s2" aria-hidden="true"></span>
+          <span class="sparkle s3" aria-hidden="true"></span>
+          <div class="sticker sticker--heart" aria-hidden="true">사랑해 ♥</div>
+          <div class="bubble bubble--a" aria-hidden="true">대박!</div>
+          <div class="bubble bubble--b" aria-hidden="true">ㅋㅋㅋ</div>
+        </div>
+      </div>
+      <svg class="waves" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 30 Q 25 5 50 30 T 100 30 T 150 30 T 200 30 T 250 30 T 300 30 T 350 30 T 400 30 T 450 30 T 500 30 T 550 30 T 600 30 T 650 30 T 700 30 T 750 30 T 800 30 T 850 30 T 900 30 T 950 30 T 1000 30 T 1050 30 T 1100 30 T 1150 30 T 1200 30"/>
+      </svg>
+    </section>
+
+    <!-- ===== RUBANS CROISÉS ===== -->
+    <div class="tapes" aria-hidden="true">
+      <div class="tape tape--coral"><div class="tape__track"><span>K-FOOD ✦ <b class="mk">한식</b> ✦ STREET FOOD ✦ <b class="mk">길거리 음식</b> ✦ SEOUL ✦ <b class="mk">서울</b> ✦ K-POP ✦ <b class="mk">케이팝</b> ✦ DAEBAK ✦ <b class="mk">대박</b> ✦ MASISSEOYO ✦ <b class="mk">맛있어요</b> ✦&nbsp;</span><span>K-FOOD ✦ <b class="mk">한식</b> ✦ STREET FOOD ✦ <b class="mk">길거리 음식</b> ✦ SEOUL ✦ <b class="mk">서울</b> ✦ K-POP ✦ <b class="mk">케이팝</b> ✦ DAEBAK ✦ <b class="mk">대박</b> ✦ MASISSEOYO ✦ <b class="mk">맛있어요</b> ✦&nbsp;</span></div></div>
+      <div class="tape tape--black"><div class="tape__track"><span>CROUSTY CHIKIN BOWL ✦ <b class="mk">치킨 볼</b> ✦ FRIED CHICKEN ✦ <b class="mk">치킨</b> ✦ BIBIMBAP ✦ <b class="mk">비빔밥</b> ✦ KIMCHI DOG ✦ <b class="mk">김치</b> ✦ HOT-DOG ✦ <b class="mk">핫도그</b> ✦ GOCHUJANG ✦ <b class="mk">고추장</b> ✦&nbsp;</span><span>CROUSTY CHIKIN BOWL ✦ <b class="mk">치킨 볼</b> ✦ FRIED CHICKEN ✦ <b class="mk">치킨</b> ✦ BIBIMBAP ✦ <b class="mk">비빔밥</b> ✦ KIMCHI DOG ✦ <b class="mk">김치</b> ✦ HOT-DOG ✦ <b class="mk">핫도그</b> ✦ GOCHUJANG ✦ <b class="mk">고추장</b> ✦&nbsp;</span></div></div>
+    </div>
+
+    <!-- ===== MENU ===== -->
+    <section class="menu" id="menu">
+      <div class="section-head">
+        <p class="tag tag--green">메뉴 · Menu</p>
+        <h2>What we serve <span class="ko">맛있어요!</span></h2>
+        <p>Fried chicken, bibimbap, kimchi dogs… homemade Korean classics. Lunch and dinner Tuesday to Friday, dinner on weekends.</p>
+        <p class="legend"><span>🌶️ spicy</span><span>🌱 vegetarian</span><span>⭐ signature</span></p>
+      </div>
+
+      <div class="menu__grid">
+        <article class="card card--coral reveal">
+          <span class="badge-new">SIGNATURE</span>
+          <div class="card__img"><img src="assets/img/crousty-chikin.webp" alt="Crousty Chikin Bowl: rice, crispy chicken and sauces" loading="lazy"></div>
+          <div class="card__body">
+            <p class="card__ko">크리스피 치킨 볼</p>
+            <h3>Crousty Chikin Bowl <i class="pic" title="Signature">⭐</i></h3>
+            <p>The generous bowl everyone agrees on: a rice base, extra-crispy chicken and its sauces.</p>
+            <p class="card__buy"><span class="card__price">CHF <span data-price="crousty-bowl">20.90</span></span><button class="add add--big js-add" type="button" data-add="crousty-bowl" aria-label="Add Crousty Chikin Bowl to cart" hidden>+</button></p>
+          </div>
+        </article>
+
+        <article class="card card--black reveal" data-switch="Fried chicken">
+          <div class="card__img"><img src="assets/img/poulet-traditional.webp" alt="Fried chicken Traditional" loading="lazy"><span class="card__label">Traditional</span></div>
+          <div class="card__body">
+            <p class="card__ko">치킨</p>
+            <h3>Fried chicken</h3>
+            <p class="variants__hint">Pick your sauce 👇</p>
+            <ul class="variants variants--switch">
+              <li class="is-active" tabindex="0" data-img="assets/img/poulet-traditional.webp"><span>Traditional <i class="pic" title="Spicy">🌶️</i><small>The authentic recipe, lightly spiced with gochujang</small></span><b data-price="poulet-traditional">11.90</b><button class="add js-add" type="button" data-add="poulet-traditional" aria-label="Add Fried chicken Traditional to cart" hidden>+</button></li>
+              <li tabindex="0" data-img="assets/img/poulet-sojail.webp"><span>Sojail <small>Sweet soy sauce and garlic, simple as that!</small></span><b data-price="poulet-sojail">11.90</b><button class="add js-add" type="button" data-add="poulet-sojail" aria-label="Add Fried chicken Sojail to cart" hidden>+</button></li>
+              <li tabindex="0" data-img="assets/img/poulet-lime-coco-curry.webp"><span>Lime Coco Curry <small>Coconut milk, curry and a zesty touch</small></span><b data-price="poulet-lime-coco-curry">11.90</b><button class="add js-add" type="button" data-add="poulet-lime-coco-curry" aria-label="Add Fried chicken Lime Coco Curry to cart" hidden>+</button></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card card--cream reveal" data-switch="Bibimbap">
+          <div class="card__img"><img src="assets/img/bibimbap-boeuf.webp" alt="Beef bibimbap" loading="lazy"><span class="card__label">Beef</span></div>
+          <div class="card__body">
+            <p class="card__ko">비빔밥</p>
+            <h3>Bibimbap</h3>
+            <p>The icon of Korean cuisine 🇰🇷</p>
+            <p class="variants__hint">Beef or tofu? 👇</p>
+            <ul class="variants variants--switch">
+              <li class="is-active" tabindex="0" data-img="assets/img/bibimbap-boeuf.webp"><span>Beef</span><b data-price="bibimbap-boeuf">23.90</b><button class="add js-add" type="button" data-add="bibimbap-boeuf" aria-label="Add Beef bibimbap to cart" hidden>+</button></li>
+              <li tabindex="0" data-img="assets/img/bibimbap-tofu.webp"><span>Tofu <i class="pic" title="Vegetarian">🌱</i><small>Vegetarian</small></span><b data-price="bibimbap-tofu">21.80</b><button class="add js-add" type="button" data-add="bibimbap-tofu" aria-label="Add Tofu bibimbap to cart" hidden>+</button></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card card--green reveal" data-switch="Hot-dog">
+          <div class="card__img"><img src="assets/img/hotdog-classique.webp" alt="Classic hot-dog" loading="lazy"><span class="card__label">Classic</span></div>
+          <div class="card__body">
+            <p class="card__ko">핫도그</p>
+            <h3>Hot-Dogs</h3>
+            <p class="variants__hint">Pick your dog 👇</p>
+            <ul class="variants variants--switch">
+              <li class="is-active" tabindex="0" data-img="assets/img/hotdog-classique.webp"><span>Classic <small>Chicken sausage, ketchup, mild mustard, crispy onions and homemade relish</small></span><b data-price="hotdog-classique">6.50</b><button class="add js-add" type="button" data-add="hotdog-classique" aria-label="Add Classic hot-dog to cart" hidden>+</button></li>
+              <li tabindex="0" data-img="assets/img/kimchi-dog.webp"><span>Kimchi Dog <small>Chicken sausage, homemade kimchi, gochujang mayo and spring onions</small></span><b data-price="kimchi-dog">7.50</b><button class="add js-add" type="button" data-add="kimchi-dog" aria-label="Add Kimchi Dog to cart" hidden>+</button></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <!-- Tableau façon pojangmacha (포장마차) -->
+      <div class="board reveal">
+        <div class="board__tent" aria-hidden="true"></div>
+        <div class="board__inner">
+          <div class="board__col">
+            <h3><span class="ko">사이드</span> Sides</h3>
+            <ul>
+              <li class="has-thumb"><img src="assets/img/frites-maison.webp" alt="Homemade fries" loading="lazy"><span>Homemade fries</span><b data-price="frites">6.00</b><button class="add js-add" type="button" data-add="frites" aria-label="Add Homemade fries to cart" hidden>+</button></li>
+              <li class="has-thumb"><img src="assets/img/riz-blanc.webp" alt="White rice" loading="lazy"><span>White rice</span><b data-price="riz">6.00</b><button class="add js-add" type="button" data-add="riz" aria-label="Add White rice to cart" hidden>+</button></li>
+            </ul>
+          </div>
+          <div class="board__col">
+            <h3><span class="ko">음료</span> Soft drinks</h3>
+            <ul>
+              <li class="has-thumb"><img class="thumb--product" src="assets/img/eau-henniez.webp" alt="Henniez mineral water" loading="lazy"><span>Still mineral water <small>Henniez 50 cl</small></span><b data-price="eau-plate">4.00</b><button class="add js-add" type="button" data-add="eau-plate" aria-label="Add Still mineral water to cart" hidden>+</button></li>
+              <li class="has-thumb"><img class="thumb--product" src="assets/img/eau-henniez.webp" alt="Henniez mineral water" loading="lazy"><span>Sparkling mineral water <small>Henniez 50 cl</small></span><b data-price="eau-gazeuse">4.00</b><button class="add js-add" type="button" data-add="eau-gazeuse" aria-label="Add Sparkling mineral water to cart" hidden>+</button></li>
+              <li class="has-thumb"><img class="thumb--product" src="assets/img/oishi-honey-lemon.webp" alt="OISHI Green Tea Honey Lemon" loading="lazy"><span>OISHI Green Tea Honey Lemon 🍋</span><b data-price="oishi-honey-lemon">5.00</b><button class="add js-add" type="button" data-add="oishi-honey-lemon" aria-label="Add OISHI Green Tea Honey Lemon to cart" hidden>+</button></li>
+              <li class="has-thumb"><img class="thumb--product" src="assets/img/oishi-original.webp" alt="OISHI Green Tea Original" loading="lazy"><span>OISHI Green Tea Original 🍃</span><b data-price="oishi-original">5.00</b><button class="add js-add" type="button" data-add="oishi-original" aria-label="Add OISHI Green Tea Original to cart" hidden>+</button></li>
+            </ul>
+          </div>
+          <div class="board__col">
+            <h3><span class="ko">술</span> Alcohol</h3>
+            <ul>
+              <li class="has-thumb"><img class="thumb--product" src="assets/img/asahi.webp" alt="Asahi Super Dry beer" loading="lazy"><span>Asahi beer <small>33 cl</small></span><b data-price="asahi">6.00</b><button class="add js-add" type="button" data-add="asahi" aria-label="Add Asahi beer to cart" hidden>+</button></li>
+            </ul>
+          </div>
+        </div>
+        <p class="board__note">Prices in CHF, VAT included · Allergen information on request.</p>
+      </div>
+      <p class="menu__order"><a class="btn btn--ghost js-order" hidden target="_blank" rel="noopener">Prefer delivery? Uber Eats 🛵</a></p>
+    </section>
+
+    <div class="dancheong" aria-hidden="true"></div>
+
+    <!-- ===== HISTOIRE ===== -->
+    <section class="story" id="histoire">
+      <div class="story__stripes" aria-hidden="true"></div>
+      <div class="story__inner">
+        <div class="story__visual reveal">
+          <img src="assets/img/logo.png" alt="Logo Sosiji" class="story__logo" loading="lazy">
+          <div class="spiral spiral--coral" aria-hidden="true"></div>
+          <div class="spiral spiral--green" aria-hidden="true"></div>
+        </div>
+        <div class="story__text reveal">
+          <div class="seal" role="img" aria-label="Korean seal: 맛집 인증, approved restaurant"><span>맛</span><span>집</span><span>인</span><span>증</span></div>
+          <p class="tag">이야기 · Our story</p>
+          <h2><b class="neon-ko">소시지</b> <span>= sausage.</span></h2>
+          <p>“Sosiji” is the Korean word for <strong>sausage</strong>. A nod to the street stalls of Seoul, where you grab a hot-dog between two neon signs with K-pop blasting from the speakers.</p>
+          <p>Same energy here: generous Korean recipes, sauces with just the right kick, and a vibe that takes you travelling.</p>
+          <ul class="chips">
+            <li>🌶️ Gochujang</li>
+            <li>🥬 Kimchi</li>
+            <li>🍗 Double fried</li>
+            <li>🔥 Made to order</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="dancheong dancheong--rev" aria-hidden="true"></div>
+
+    <!-- ===== SEOUL VIBES ===== -->
+    <section class="seoul" id="seoul">
+      <div class="lanterns" aria-hidden="true"></div>
+      <svg class="skyline" viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+      <div class="seoul__neon" aria-hidden="true">
+        <span class="neon neon--pink">서울</span>
+        <span class="neon neon--green">맛집</span>
+      </div>
+      <div class="section-head section-head--light">
+        <p class="tag tag--coral">서울 바이브 · Seoul vibes</p>
+        <h2>A little piece of Korea</h2>
+        <p>Street food is part of Korea's soul. Here's what inspires us.</p>
+      </div>
+      <div class="seoul__grid">
+        <div class="vibe reveal">
+          <span class="vibe__ko">포장마차</span>
+          <h3>Pojangmacha</h3>
+          <p>Seoul's orange tents where people eat late into the night, shoulder to shoulder.</p>
+        </div>
+        <div class="vibe reveal">
+          <span class="vibe__ko">케이팝</span>
+          <h3>K-Pop</h3>
+          <p>Flashy colours, 200% energy and playlists on repeat in the kitchen.</p>
+        </div>
+        <div class="vibe reveal">
+          <span class="vibe__ko">명동</span>
+          <h3>Myeongdong</h3>
+          <p>The street food district: hot-dogs, skewers and fried chicken on every corner.</p>
+        </div>
+        <div class="vibe reveal">
+          <span class="vibe__ko">치맥</span>
+          <h3>Chimaek</h3>
+          <p>Chi(킨) + maek(주): fried chicken + beer, the cult duo of Korean nights out.</p>
+        </div>
+      </div>
+      <div class="hangul-lesson reveal">
+        <p class="hangul-lesson__title">Mini Korean lesson ✦</p>
+        <dl>
+          <div><dt>안녕하세요 <button class="say" type="button" data-say="안녕하세요" aria-label="Listen to 안녕하세요" hidden>🔊</button></dt><dd>annyeonghaseyo — hello</dd></div>
+          <div><dt>맛있어요 <button class="say" type="button" data-say="맛있어요" aria-label="Listen to 맛있어요" hidden>🔊</button></dt><dd>masisseoyo — it's delicious</dd></div>
+          <div><dt>감사합니다 <button class="say" type="button" data-say="감사합니다" aria-label="Listen to 감사합니다" hidden>🔊</button></dt><dd>gamsahamnida — thank you</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===== GALERIE ===== -->
+    <section class="gallery">
+      <div class="section-head">
+        <p class="tag tag--green">갤러리 · Gallery</p>
+        <h2>Hungry yet?</h2>
+      </div>
+      <div class="gallery__grid">
+        <figure class="reveal"><img src="assets/img/crousty-chikin.webp" alt="Crousty Chikin Bowl" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/poulet-traditional.webp" alt="Fried chicken Traditional" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/bibimbap-boeuf.webp" alt="Beef bibimbap" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/kimchi-dog.webp" alt="Kimchi Dog" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/poulet-lime-coco-curry.webp" alt="Fried chicken Lime Coco Curry" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/bibimbap-tofu.webp" alt="Tofu bibimbap" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/poulet-sojail.webp" alt="Poulet frit Sojail" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/img/hotdog-classique.webp" alt="Classic hot-dog" loading="lazy"></figure>
+      </div>
+      <p class="gallery__cta">
+        <a class="btn js-insta" hidden target="_blank" rel="noopener">Follow us on Instagram</a>
+      </p>
+    </section>
+
+    <!-- ===== INFOS ===== -->
+    <section class="infos" id="infos">
+      <div class="infos__card reveal">
+        <p class="tag">오시는 길 · Find us</p>
+        <h2>Come and see us</h2>
+        <!-- Les infos viennent de config.js -->
+        <div class="infos__grid">
+          <div data-block="address" hidden>
+            <h3>📍 Address</h3>
+            <p data-cfg="address"></p>
+            <a class="infos__link js-maps" target="_blank" rel="noopener">Directions →</a>
+          </div>
+          <div>
+            <h3>🕐 Opening hours <span class="open-status" hidden></span></h3>
+            <ul class="hours"></ul>
+          </div>
+          <div data-block="contact" hidden>
+            <h3>📞 Contact</h3>
+            <p><a class="js-tel" hidden></a> <a class="js-mail" hidden></a></p>
+          </div>
+          <div data-block="order" hidden>
+            <h3>🛵 Order</h3>
+            <p><button class="btn btn--small js-cart-open" type="button" hidden>Pickup</button> <a class="btn btn--small js-order" target="_blank" rel="noopener">Uber Eats delivery</a></p>
+          </div>
+        </div>
+        <div class="infos__map" hidden>
+          <iframe title="Map: Sosiji Korean Streetfood" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="dancheong" aria-hidden="true"></div>
+  <footer class="footer">
+    <div class="footer__big" aria-hidden="true">SOSIJI <span class="neon-ko neon-ko--mint">소시지</span></div>
+    <div class="footer__row">
+      <img src="assets/img/logo.png" alt="" width="72" height="72">
+      <p>Korean Streetfood · Made with ♥ and lots of gochujang</p>
+      <nav class="footer__links" aria-label="Links">
+        <a class="js-order" hidden target="_blank" rel="noopener">Uber Eats delivery</a>
+        <a class="js-insta" hidden target="_blank" rel="noopener">Instagram</a>
+        <a href="mentions-legales.html" hreflang="fr">Legal notice (FR)</a>
+        <a href="mentions-legales.html#confidentialite" hreflang="fr">Privacy (FR)</a>
+      </nav>
+      <p>© <span id="year"></span> Sosiji</p>
+    </div>
+  </footer>
+
+  <!-- ===== PANIER (commande à emporter, paiement Stripe) ===== -->
+  <button class="cart-fab js-cart-open" type="button" hidden aria-label="Open the cart">
+    <span class="cart-fab__icon" aria-hidden="true">🛒</span>
+    <span class="cart-fab__label">Cart <span class="ko">장바구니</span></span>
+    <span class="cart-fab__count">0</span>
+    <span class="cart-fab__total"></span>
+  </button>
+  <div class="cart-overlay" hidden></div>
+  <aside class="cart" aria-label="Cart" aria-hidden="true" inert>
+    <header class="cart__head">
+      <h2><span class="ko">장바구니</span> Cart</h2>
+      <button class="cart__close" type="button" aria-label="Close the cart">×</button>
+    </header>
+    <div class="cart__body">
+      <p class="cart__empty">Your cart is empty. Add dishes with the <b>+</b> buttons in the menu.</p>
+      <ul class="cart__lines"></ul>
+      <form class="cart__form" novalidate>
+        <p class="cart__closed" hidden></p>
+        <label><span>Pickup time <span class="req">*</span></span>
+          <select name="pickup" required></select>
+        </label>
+        <label><span>First name <span class="req">*</span></span>
+          <input name="name" autocomplete="given-name" maxlength="60" required>
+        </label>
+        <label><span>Phone <span class="req">*</span></span>
+          <input name="phone" type="tel" autocomplete="tel" maxlength="20" placeholder="079 123 45 67" required>
+        </label>
+        <label><span>Note <small>(allergy, no onions…)</small></span>
+          <textarea name="note" rows="2" maxlength="200"></textarea>
+        </label>
+        <label class="cart__age" hidden><input type="checkbox" name="ageOk"> I'm 16 or older (beer) — ID may be requested at pickup.</label>
+        <p class="cart__error" role="alert" hidden></p>
+        <div class="cart__total"><span>Total</span><b></b></div>
+        <button class="btn btn--order cart__pay" type="submit">Pay</button>
+        <p class="cart__small">Pickup at Place du Traité-de-Turin 3, Thônex. Secure payment by Stripe: TWINT, card, Apple Pay, Google Pay.</p>
+      </form>
+    </div>
+  </aside>
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="assets/js/ordering-core.js"></script>
+  <script src="script.js"></script>
+  <script src="assets/js/cart.js"></script>
+</body>
+</html>
