@@ -4,11 +4,15 @@
    Un champ laissé vide ('') = l'élément correspondant est masqué.
    ========================================================== */
 window.SOSIJI = {
-  // Lien de la page de commande (Uber Eats, etc.) → boutons « Commander »
-  orderUrl: '',
+  // Adresse du site (pour Google et les aperçus de partage)
+  siteUrl: 'https://sosiji.netlify.app',
+
+  // Livraison : lien Uber Eats → boutons « Livraison »
+  // (la commande à emporter avec paiement en ligne se règle dans data/restaurant.json)
+  orderUrl: 'https://www.ubereats.com/ch-fr/store/sosiji-korean-street-food/RUV9M3iTTu6KDACkkptbkw',
 
   // Lien du compte Instagram, ex. 'https://www.instagram.com/sosiji...'
-  instagramUrl: '',
+  instagramUrl: 'https://www.instagram.com/sosiji.belleterre/',
 
   // Adresse complète
   address: 'Place du Traité-de-Turin 3, 1226 Thônex',
@@ -17,18 +21,12 @@ window.SOSIJI = {
   phone: '076 288 16 13',
   email: '',
 
-  // Horaires — dow = jours de la semaine (0 = dimanche, 1 = lundi … 6 = samedi)
-  // slots vide = fermé
-  hours: [
-    { days: 'Lundi', dow: [1], slots: [] },
-    { days: 'Mardi – Vendredi', dow: [2, 3, 4, 5], slots: ['11:30–14:00', '18:30–22:00'] },
-    { days: 'Samedi', dow: [6], slots: ['18:00–22:00'] },
-    { days: 'Dimanche', dow: [0], slots: ['18:00–21:30'] },
-  ],
+  // Horaires et menu : voir data/restaurant.json
 
   // Bandeau d'annonce en haut du site (plat du moment, fermeture, menu spécial…)
   // Laisser vide pour le masquer.
   announcement: '',
+  announcement_en: '',   // même texte en anglais (version /en)
 
   // Mentions légales (obligatoire en Suisse)
   legal: {

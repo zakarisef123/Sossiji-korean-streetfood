@@ -11,7 +11,15 @@
   <meta property="og:site_name" content="Sosiji Korean Streetfood">
   <meta property="og:title" content="Sosiji 소시지 — Korean Streetfood">
   <meta property="og:description" content="Crousty Chikin Bowl, poulet frit au gochujang, bibimbap et kimchi dogs. Le goût de Séoul, version street.">
+  <meta property="og:url" content="https://sosiji.netlify.app/">
+  <meta property="og:image" content="https://sosiji.netlify.app/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_CH">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://sosiji.netlify.app/">
+  <link rel="alternate" hreflang="fr" href="https://sosiji.netlify.app/">
+  <link rel="alternate" hreflang="en" href="https://sosiji.netlify.app/en">
   <link rel="apple-touch-icon" href="assets/img/logo.png">
   <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="style.css">
@@ -55,7 +63,8 @@
       <a href="#histoire">Histoire <span class="ko">이야기</span></a>
       <a href="#seoul">Séoul <span class="ko">서울</span></a>
       <a href="#infos">Infos <span class="ko">정보</span></a>
-      <a class="btn btn--small js-order" hidden target="_blank" rel="noopener">Commander 🛵</a>
+      <a class="nav__delivery js-order" hidden target="_blank" rel="noopener">Livraison 🛵</a>
+      <button class="btn btn--small js-cart-open" type="button" hidden>🛒 Commander</button>
     </nav>
   </header>
 
@@ -75,9 +84,9 @@
           <p class="hero__lead">Crousty Chikin Bowl, poulet frit au gochujang, bibimbap et kimchi dogs. Comme dans les ruelles de Myeongdong — sans prendre l'avion.</p>
           <p class="hero__status"><span class="open-status" hidden></span></p>
           <div class="hero__cta">
-            <a class="btn btn--order js-order" hidden target="_blank" rel="noopener">Commander <span class="ko">주문</span> 🛵</a>
+            <a href="#menu" class="btn btn--order js-takeaway" hidden>Commander à emporter <span class="ko">포장</span></a>
             <a href="#menu" class="btn">Voir le menu</a>
-            <a href="#infos" class="btn btn--ghost">Où nous trouver ?</a>
+            <a class="btn btn--ghost js-order" hidden target="_blank" rel="noopener">Livraison Uber Eats 🛵</a>
           </div>
         </div>
         <div class="hero__visual">
@@ -123,7 +132,7 @@
             <p class="card__ko">크리스피 치킨 볼</p>
             <h3>Crousty Chikin Bowl <i class="pic" title="Signature">⭐</i></h3>
             <p>Le bol généreux qui met tout le monde d'accord : une base de riz, du poulet ultra croustillant et ses sauces.</p>
-            <p class="card__price">CHF 20.90</p>
+            <p class="card__buy"><span class="card__price">CHF <span data-price="crousty-bowl">20.90</span></span><button class="add add--big js-add" type="button" data-add="crousty-bowl" aria-label="Ajouter Crousty Chikin Bowl au panier" hidden>+</button></p>
           </div>
         </article>
 
@@ -134,9 +143,9 @@
             <h3>Poulet frit</h3>
             <p class="variants__hint">Choisissez votre sauce 👇</p>
             <ul class="variants variants--switch">
-              <li class="is-active" tabindex="0" data-img="assets/img/poulet-traditional.webp"><span>Traditional <i class="pic" title="Épicé">🌶️</i><small>Recette authentique, légèrement épicée au gochujang</small></span><b>11.90</b></li>
-              <li tabindex="0" data-img="assets/img/poulet-sojail.webp"><span>Sojail <small>Sauce soja sucrée et ail, tout simplement !</small></span><b>11.90</b></li>
-              <li tabindex="0" data-img="assets/img/poulet-lime-coco-curry.webp"><span>Lime Coco Curry <small>Lait de coco, curry et une petite touche acidulée</small></span><b>11.90</b></li>
+              <li class="is-active" tabindex="0" data-img="assets/img/poulet-traditional.webp"><span>Traditional <i class="pic" title="Épicé">🌶️</i><small>Recette authentique, légèrement épicée au gochujang</small></span><b data-price="poulet-traditional">11.90</b><button class="add js-add" type="button" data-add="poulet-traditional" aria-label="Ajouter Poulet frit Traditional au panier" hidden>+</button></li>
+              <li tabindex="0" data-img="assets/img/poulet-sojail.webp"><span>Sojail <small>Sauce soja sucrée et ail, tout simplement !</small></span><b data-price="poulet-sojail">11.90</b><button class="add js-add" type="button" data-add="poulet-sojail" aria-label="Ajouter Poulet frit Sojail au panier" hidden>+</button></li>
+              <li tabindex="0" data-img="assets/img/poulet-lime-coco-curry.webp"><span>Lime Coco Curry <small>Lait de coco, curry et une petite touche acidulée</small></span><b data-price="poulet-lime-coco-curry">11.90</b><button class="add js-add" type="button" data-add="poulet-lime-coco-curry" aria-label="Ajouter Poulet frit Lime Coco Curry au panier" hidden>+</button></li>
             </ul>
           </div>
         </article>
@@ -149,8 +158,8 @@
             <p>L'icône de la cuisine coréenne 🇰🇷</p>
             <p class="variants__hint">Bœuf ou tofu ? 👇</p>
             <ul class="variants variants--switch">
-              <li class="is-active" tabindex="0" data-img="assets/img/bibimbap-boeuf.webp"><span>Bœuf</span><b>23.90</b></li>
-              <li tabindex="0" data-img="assets/img/bibimbap-tofu.webp"><span>Tofu <i class="pic" title="Végétarien">🌱</i><small>Végétarien</small></span><b>21.80</b></li>
+              <li class="is-active" tabindex="0" data-img="assets/img/bibimbap-boeuf.webp"><span>Bœuf</span><b data-price="bibimbap-boeuf">23.90</b><button class="add js-add" type="button" data-add="bibimbap-boeuf" aria-label="Ajouter Bibimbap bœuf au panier" hidden>+</button></li>
+              <li tabindex="0" data-img="assets/img/bibimbap-tofu.webp"><span>Tofu <i class="pic" title="Végétarien">🌱</i><small>Végétarien</small></span><b data-price="bibimbap-tofu">21.80</b><button class="add js-add" type="button" data-add="bibimbap-tofu" aria-label="Ajouter Bibimbap tofu au panier" hidden>+</button></li>
             </ul>
           </div>
         </article>
@@ -162,8 +171,8 @@
             <h3>Hot-Dogs</h3>
             <p class="variants__hint">Choisissez votre dog 👇</p>
             <ul class="variants variants--switch">
-              <li class="is-active" tabindex="0" data-img="assets/img/hotdog-classique.webp"><span>Classique <small>Saucisse de volaille, ketchup, moutarde douce, oignons frits et relish maison</small></span><b>6.50</b></li>
-              <li tabindex="0" data-img="assets/img/kimchi-dog.webp"><span>Kimchi Dog <small>Saucisse de volaille, kimchi maison, mayo au gochujang et cébettes</small></span><b>7.50</b></li>
+              <li class="is-active" tabindex="0" data-img="assets/img/hotdog-classique.webp"><span>Classique <small>Saucisse de volaille, ketchup, moutarde douce, oignons frits et relish maison</small></span><b data-price="hotdog-classique">6.50</b><button class="add js-add" type="button" data-add="hotdog-classique" aria-label="Ajouter Hot-dog Classique au panier" hidden>+</button></li>
+              <li tabindex="0" data-img="assets/img/kimchi-dog.webp"><span>Kimchi Dog <small>Saucisse de volaille, kimchi maison, mayo au gochujang et cébettes</small></span><b data-price="kimchi-dog">7.50</b><button class="add js-add" type="button" data-add="kimchi-dog" aria-label="Ajouter Kimchi Dog au panier" hidden>+</button></li>
             </ul>
           </div>
         </article>
@@ -176,29 +185,29 @@
           <div class="board__col">
             <h3><span class="ko">사이드</span> Sides</h3>
             <ul>
-              <li class="has-thumb"><img src="assets/img/frites-maison.webp" alt="Frites maison" loading="lazy"><span>Frites maison</span><b>6.00</b></li>
-              <li class="has-thumb"><img src="assets/img/riz-blanc.webp" alt="Riz blanc" loading="lazy"><span>Riz blanc</span><b>6.00</b></li>
+              <li class="has-thumb"><img src="assets/img/frites-maison.webp" alt="Frites maison" loading="lazy"><span>Frites maison</span><b data-price="frites">6.00</b><button class="add js-add" type="button" data-add="frites" aria-label="Ajouter Frites maison au panier" hidden>+</button></li>
+              <li class="has-thumb"><img src="assets/img/riz-blanc.webp" alt="Riz blanc" loading="lazy"><span>Riz blanc</span><b data-price="riz">6.00</b><button class="add js-add" type="button" data-add="riz" aria-label="Ajouter Riz blanc au panier" hidden>+</button></li>
             </ul>
           </div>
           <div class="board__col">
             <h3><span class="ko">음료</span> Soft drinks</h3>
             <ul>
-              <li class="has-thumb"><img class="thumb--product" src="assets/img/eau-henniez.webp" alt="Eau minérale Henniez" loading="lazy"><span>Eau minérale plate <small>Henniez 50 cl</small></span><b>4.00</b></li>
-              <li class="has-thumb"><img class="thumb--product" src="assets/img/eau-henniez.webp" alt="Eau minérale Henniez" loading="lazy"><span>Eau minérale gazeuse <small>Henniez 50 cl</small></span><b>4.00</b></li>
-              <li class="has-thumb"><img class="thumb--product" src="assets/img/oishi-honey-lemon.webp" alt="OISHI Green Tea Honey Lemon" loading="lazy"><span>OISHI Green Tea Honey Lemon 🍋</span><b>5.00</b></li>
-              <li class="has-thumb"><img class="thumb--product" src="assets/img/oishi-original.webp" alt="OISHI Green Tea Original" loading="lazy"><span>OISHI Green Tea Original 🍃</span><b>5.00</b></li>
+              <li class="has-thumb"><img class="thumb--product" src="assets/img/eau-henniez.webp" alt="Eau minérale Henniez" loading="lazy"><span>Eau minérale plate <small>Henniez 50 cl</small></span><b data-price="eau-plate">4.00</b><button class="add js-add" type="button" data-add="eau-plate" aria-label="Ajouter Eau minérale plate au panier" hidden>+</button></li>
+              <li class="has-thumb"><img class="thumb--product" src="assets/img/eau-henniez.webp" alt="Eau minérale Henniez" loading="lazy"><span>Eau minérale gazeuse <small>Henniez 50 cl</small></span><b data-price="eau-gazeuse">4.00</b><button class="add js-add" type="button" data-add="eau-gazeuse" aria-label="Ajouter Eau minérale gazeuse au panier" hidden>+</button></li>
+              <li class="has-thumb"><img class="thumb--product" src="assets/img/oishi-honey-lemon.webp" alt="OISHI Green Tea Honey Lemon" loading="lazy"><span>OISHI Green Tea Honey Lemon 🍋</span><b data-price="oishi-honey-lemon">5.00</b><button class="add js-add" type="button" data-add="oishi-honey-lemon" aria-label="Ajouter OISHI Green Tea Honey Lemon au panier" hidden>+</button></li>
+              <li class="has-thumb"><img class="thumb--product" src="assets/img/oishi-original.webp" alt="OISHI Green Tea Original" loading="lazy"><span>OISHI Green Tea Original 🍃</span><b data-price="oishi-original">5.00</b><button class="add js-add" type="button" data-add="oishi-original" aria-label="Ajouter OISHI Green Tea Original au panier" hidden>+</button></li>
             </ul>
           </div>
           <div class="board__col">
             <h3><span class="ko">술</span> Alcools</h3>
             <ul>
-              <li class="has-thumb"><img class="thumb--product" src="assets/img/asahi.webp" alt="Bière Asahi Super Dry" loading="lazy"><span>Bière Asahi <small>33 cl</small></span><b>6.00</b></li>
+              <li class="has-thumb"><img class="thumb--product" src="assets/img/asahi.webp" alt="Bière Asahi Super Dry" loading="lazy"><span>Bière Asahi <small>33 cl</small></span><b data-price="asahi">6.00</b><button class="add js-add" type="button" data-add="asahi" aria-label="Ajouter Bière Asahi au panier" hidden>+</button></li>
             </ul>
           </div>
         </div>
         <p class="board__note">Prix en CHF, TVA incluse · Informations sur les allergènes sur demande.</p>
       </div>
-      <p class="menu__order"><a class="btn btn--order js-order" hidden target="_blank" rel="noopener">Commander en ligne <span class="ko">주문하기</span> 🛵</a></p>
+      <p class="menu__order"><a class="btn btn--ghost js-order" hidden target="_blank" rel="noopener">Plutôt en livraison ? Uber Eats 🛵</a></p>
     </section>
 
     <div class="dancheong" aria-hidden="true"></div>
@@ -317,8 +326,8 @@
             <p><a class="js-tel" hidden></a> <a class="js-mail" hidden></a></p>
           </div>
           <div data-block="order" hidden>
-            <h3>🛵 Livraison</h3>
-            <p><a class="btn btn--small js-order" target="_blank" rel="noopener">Commander en ligne</a></p>
+            <h3>🛵 Commander</h3>
+            <p><button class="btn btn--small js-cart-open" type="button" hidden>À emporter</button> <a class="btn btn--small js-order" target="_blank" rel="noopener">Livraison Uber Eats</a></p>
           </div>
         </div>
         <div class="infos__map" hidden>
@@ -336,7 +345,7 @@
       <img src="assets/img/logo.png" alt="" width="72" height="72">
       <p>Korean Streetfood · Fait avec ♥ et beaucoup de gochujang</p>
       <nav class="footer__links" aria-label="Liens">
-        <a class="js-order" hidden target="_blank" rel="noopener">Commander</a>
+        <a class="js-order" hidden target="_blank" rel="noopener">Livraison Uber Eats</a>
         <a class="js-insta" hidden target="_blank" rel="noopener">Instagram</a>
         <a href="mentions-legales.html">Mentions légales</a>
         <a href="mentions-legales.html#confidentialite">Confidentialité</a>
@@ -345,9 +354,49 @@
     </div>
   </footer>
 
-  <a class="order-bar js-order" hidden target="_blank" rel="noopener">🛵 Commander <span class="ko">주문하기</span></a>
+  <!-- ===== PANIER (commande à emporter, paiement Stripe) ===== -->
+  <button class="cart-fab js-cart-open" type="button" hidden aria-label="Ouvrir le panier">
+    <span class="cart-fab__icon" aria-hidden="true">🛒</span>
+    <span class="cart-fab__label">Panier <span class="ko">장바구니</span></span>
+    <span class="cart-fab__count">0</span>
+    <span class="cart-fab__total"></span>
+  </button>
+  <div class="cart-overlay" hidden></div>
+  <aside class="cart" aria-label="Panier" aria-hidden="true" inert>
+    <header class="cart__head">
+      <h2><span class="ko">장바구니</span> Panier</h2>
+      <button class="cart__close" type="button" aria-label="Fermer le panier">×</button>
+    </header>
+    <div class="cart__body">
+      <p class="cart__empty">Votre panier est vide. Ajoutez des plats avec les boutons <b>+</b> du menu.</p>
+      <ul class="cart__lines"></ul>
+      <form class="cart__form" novalidate>
+        <p class="cart__closed" hidden></p>
+        <label><span>Heure de retrait <span class="req">*</span></span>
+          <select name="pickup" required></select>
+        </label>
+        <label><span>Prénom <span class="req">*</span></span>
+          <input name="name" autocomplete="given-name" maxlength="60" required>
+        </label>
+        <label><span>Téléphone <span class="req">*</span></span>
+          <input name="phone" type="tel" autocomplete="tel" maxlength="20" placeholder="079 123 45 67" required>
+        </label>
+        <label><span>Remarque <small>(allergie, sans oignons…)</small></span>
+          <textarea name="note" rows="2" maxlength="200"></textarea>
+        </label>
+        <label class="cart__age" hidden><input type="checkbox" name="ageOk"> J'ai 16 ans ou plus (bière) — une pièce d'identité peut être demandée au retrait.</label>
+        <p class="cart__error" role="alert" hidden></p>
+        <div class="cart__total"><span>Total</span><b></b></div>
+        <button class="btn btn--order cart__pay" type="submit">Payer</button>
+        <p class="cart__small">À emporter au Place du Traité-de-Turin 3, Thônex. Paiement sécurisé par Stripe : TWINT, carte, Apple Pay, Google Pay.</p>
+      </form>
+    </div>
+  </aside>
+  <div class="toast" role="status" aria-live="polite"></div>
 
   <script src="config.js"></script>
+  <script src="assets/js/ordering-core.js"></script>
   <script src="script.js"></script>
+  <script src="assets/js/cart.js"></script>
 </body>
 </html>

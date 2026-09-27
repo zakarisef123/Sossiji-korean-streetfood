@@ -1,0 +1,34 @@
+{
+  "_aide": "Menu, prix (en centimes : 1190 = CHF 11.90) et horaires. Utilisé par le site ET par le paiement en ligne. \"available\": false = plat en rupture (masqué de la commande en ligne).",
+  "currency": "CHF",
+  "ordering": {
+    "enabled": true,
+    "prepMinutes": 20,
+    "slotStep": 15,
+    "lastPickupBeforeClose": 15,
+    "maxItems": 30
+  },
+  "hours": [
+    { "days": "Lundi", "days_en": "Monday", "dow": [1], "slots": [] },
+    { "days": "Mardi – Vendredi", "days_en": "Tuesday – Friday", "dow": [2, 3, 4, 5], "slots": ["11:30-14:00", "18:30-22:00"] },
+    { "days": "Samedi", "days_en": "Saturday", "dow": [6], "slots": ["18:00-22:00"] },
+    { "days": "Dimanche", "days_en": "Sunday", "dow": [0], "slots": ["18:00-21:30"] }
+  ],
+  "items": [
+    { "id": "crousty-bowl", "name": "Crousty Chikin Bowl", "price": 2090, "available": true },
+    { "id": "poulet-traditional", "name": "Poulet frit Traditional", "price": 1190, "available": true },
+    { "id": "poulet-sojail", "name": "Poulet frit Sojail", "price": 1190, "available": true },
+    { "id": "poulet-lime-coco-curry", "name": "Poulet frit Lime Coco Curry", "price": 1190, "available": true },
+    { "id": "bibimbap-boeuf", "name": "Bibimbap bœuf", "price": 2390, "available": true },
+    { "id": "bibimbap-tofu", "name": "Bibimbap tofu", "price": 2180, "available": true },
+    { "id": "hotdog-classique", "name": "Hot-dog Classique", "price": 650, "available": true },
+    { "id": "kimchi-dog", "name": "Kimchi Dog", "price": 750, "available": true },
+    { "id": "frites", "name": "Frites maison", "price": 600, "available": true },
+    { "id": "riz", "name": "Riz blanc", "price": 600, "available": true },
+    { "id": "eau-plate", "name": "Eau minérale plate 50 cl", "price": 400, "available": true },
+    { "id": "eau-gazeuse", "name": "Eau minérale gazeuse 50 cl", "price": 400, "available": true },
+    { "id": "oishi-honey-lemon", "name": "OISHI Green Tea Honey Lemon", "price": 500, "available": true },
+    { "id": "oishi-original", "name": "OISHI Green Tea Original", "price": 500, "available": true },
+    { "id": "asahi", "name": "Bière Asahi 33 cl", "price": 600, "available": true, "alcohol": true }
+  ]
+}

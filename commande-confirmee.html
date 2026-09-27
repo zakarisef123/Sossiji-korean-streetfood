@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Commande confirmée — Sosiji 소시지</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f2605b">
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .done { max-width: 620px; margin: 0 auto; padding: clamp(2.5rem, 7vw, 4.5rem) 16px; text-align: center; }
+    .done__card { background: #fffaea; border: var(--border); border-radius: var(--radius); box-shadow: 10px 10px 0 var(--green); padding: clamp(1.6rem, 5vw, 2.6rem); text-align: left; }
+    .done__big { font-family: var(--font-ko); font-size: clamp(3.2rem, 12vw, 5rem); line-height: 1; margin: 0 0 .4rem; color: #ff3d97; text-shadow: var(--glow-pink-soft); text-align: center; }
+    .done__code { font-family: var(--font-display); font-size: 2.4rem; letter-spacing: .08em; text-align: center; margin: .4rem 0 1rem; }
+    .done__pickup { text-align: center; font-size: 1.2rem; font-weight: 700; }
+    .done__pickup b { font-family: var(--font-display); font-size: 1.8rem; display: block; color: var(--green); }
+    .done ul { list-style: none; padding: 0; margin: 1.4rem 0; border-top: 2px dashed rgba(0,0,0,.2); }
+    .done li { padding: .5rem 0; border-bottom: 2px dashed rgba(0,0,0,.2); font-weight: 700; }
+    .done__total { display: flex; justify-content: space-between; font-family: var(--font-display); font-size: 1.2rem; }
+    .done__msg { text-align: center; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a href="index.html" class="nav__brand" aria-label="Sosiji — accueil">
+      <img src="assets/img/logo.png" alt="Logo Sosiji Korean Streetfood" width="56" height="56">
+      <span class="nav__word">SOSIJI <span class="ko">소시지</span></span>
+    </a>
+    <a href="index.html" class="btn btn--small" data-back>← Retour au site</a>
+  </header>
+
+  <main class="done">
+    <p class="done__big">감사합니다!</p>
+    <div class="done__card">
+      <p class="done__msg" data-msg>Chargement de votre commande…</p>
+      <div data-order hidden>
+        <p class="done__msg" data-thanks></p>
+        <p class="done__code" data-code></p>
+        <p class="done__pickup"><span data-pickup-label>Retrait aujourd'hui à</span> <b data-pickup></b></p>
+        <ul data-items></ul>
+        <p class="done__total"><span>Total</span><span data-total></span></p>
+        <p class="done__msg" data-where></p>
+      </div>
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script>
+    (function () {
+      var en = new URLSearchParams(location.search).get('lang') === 'en';
+      var t = function (fr, e) { return en ? e : fr; };
+      var c = window.SOSIJI || {};
+      var $ = function (s) { return document.querySelector('[' + s + ']'); };
+      if (en) {
+        document.documentElement.lang = 'en';
+        document.title = 'Order confirmed — Sosiji 소시지';
+        $('data-back').textContent = '← Back to the website';
+        $('data-back').href = 'en';
+        $('data-pickup-label').textContent = 'Pick up today at';
+      }
+      $('data-msg').textContent = t('Chargement de votre commande…', 'Loading your order…');
+      try { localStorage.removeItem('sosiji-cart'); } catch (e) {}
+      var id = new URLSearchParams(location.search).get('session_id');
+      fetch('/.netlify/functions/order-status?session_id=' + encodeURIComponent(id || ''))
+        .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error); return j; }); })
+        .then(function (o) {
+          $('data-msg').hidden = true;
+          $('data-order').hidden = false;
+          $('data-thanks').textContent = o.paid
+            ? t('Merci ' + o.name + ', votre commande est payée et transmise en cuisine !', 'Thanks ' + o.name + ', your order is paid and sent to the kitchen!')
+            : t('Merci ' + o.name + ' ! Votre paiement est en cours de validation.', 'Thanks ' + o.name + '! Your payment is being confirmed.');
+          $('data-code').textContent = '#' + o.code;
+          $('data-pickup').textContent = o.pickup;
+          $('data-items').innerHTML = o.items.map(function (i) { return '<li></li>'; }).join('');
+          [].forEach.call(document.querySelectorAll('[data-items] li'), function (li, k) { li.textContent = o.items[k]; });
+          $('data-total').textContent = 'CHF ' + (o.total / 100).toFixed(2);
+          $('data-where').textContent = t(
+            'Donnez le code #' + o.code + ' au comptoir : ' + (c.address || '') + '. Un souci ? Appelez le ' + (c.phone || '') + '.',
+            'Show code #' + o.code + ' at the counter: ' + (c.address || '') + '. Any issue? Call ' + (c.phone || '') + '.'
+          );
+        })
+        .catch(function () {
+          $('data-msg').textContent = t(
+            'Impossible d’afficher la commande. Si vous avez payé, elle a bien été reçue : appelez-nous au ' + (c.phone || '') + ' en cas de doute.',
+            'We couldn’t load your order. If you paid, it has been received: call us at ' + (c.phone || '') + ' if in doubt.'
+          );
+        });
+    })();
+  </script>
+</body>
+</html>
