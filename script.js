@@ -5,6 +5,124 @@ const rand = (a, b) => a + Math.random() * (b - a);
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/* ==========================================================
+   Infos du restaurant (config.js)
+   ========================================================== */
+const CFG = window.SOSIJI || {};
+const show = (el, on = true) => { if (el) el.hidden = !on; };
+
+document.querySelectorAll('.js-order').forEach((a) => {
+  if (CFG.orderUrl) a.href = CFG.orderUrl;
+  show(a, !!CFG.orderUrl);
+});
+document.querySelectorAll('.js-insta').forEach((a) => {
+  if (CFG.instagramUrl) a.href = CFG.instagramUrl;
+  show(a, !!CFG.instagramUrl);
+});
+document.querySelectorAll('[data-cfg]').forEach((el) => {
+  el.textContent = CFG[el.dataset.cfg] || '';
+});
+if (CFG.orderUrl) document.body.classList.add('has-order-bar');
+show(document.querySelector('[data-block="order"]'), !!CFG.orderUrl);
+
+// Adresse + carte
+if (CFG.address) {
+  const q = encodeURIComponent(`Sosiji Korean Streetfood, ${CFG.address}`);
+  show(document.querySelector('[data-block="address"]'));
+  const maps = document.querySelector('.js-maps');
+  if (maps) maps.href = `https://www.google.com/maps/search/?api=1&query=${q}`;
+  const map = document.querySelector('.infos__map');
+  if (map) {
+    map.querySelector('iframe').src = `https://www.google.com/maps?q=${q}&output=embed`;
+    show(map);
+  }
+}
+
+// Contact
+const tel = document.querySelector('.js-tel');
+const mail = document.querySelector('.js-mail');
+if (tel && CFG.phone) { tel.href = `tel:${CFG.phone.replace(/[^+\d]/g, '').replace(/^0/, '+41')}`; tel.textContent = CFG.phone; show(tel); }
+if (mail && CFG.email) { mail.href = `mailto:${CFG.email}`; mail.textContent = CFG.email; show(mail); }
+show(document.querySelector('[data-block="contact"]'), !!(CFG.phone || CFG.email));
+
+// Horaires + « Ouvert maintenant » (heure de Genève)
+const schedule = Array.isArray(CFG.hours) ? CFG.hours : [];
+const hoursList = document.querySelector('.hours');
+const genevaNow = () => {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Zurich', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false,
+  }).formatToParts(new Date());
+  const get = (t) => parts.find((p) => p.type === t).value;
+  const dow = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
+  return { dow, minutes: (+get('hour') % 24) * 60 + +get('minute') };
+};
+const toMin = (t) => { const [h, m] = t.trim().split(/[:h]/); return +h * 60 + (+m || 0); };
+const today = genevaNow();
+if (hoursList) {
+  hoursList.innerHTML = schedule.map((row) => `
+    <li class="${row.dow.includes(today.dow) ? 'is-today' : ''}">
+      <span>${row.days}</span>
+      <b>${row.slots.length ? row.slots.join('<br>') : 'Fermé'}</b>
+    </li>`).join('');
+}
+function openStatus() {
+  const { dow, minutes } = genevaNow();
+  const row = schedule.find((r) => r.dow.includes(dow));
+  if (!row) return null;
+  for (const slot of row.slots) {
+    const [a, b] = slot.split(/[–-]/).map(toMin);
+    if (minutes >= a && minutes < b) {
+      return { open: true, text: b - minutes <= 30 ? `Ouvert · ferme à ${slot.split(/[–-]/)[1]}` : 'Ouvert maintenant' };
+    }
+    if (minutes < a) return { open: false, text: `Fermé · ouvre à ${slot.split(/[–-]/)[0]}` };
+  }
+  return { open: false, text: 'Fermé pour le moment' };
+}
+const status = openStatus();
+if (status) {
+  document.querySelectorAll('.open-status').forEach((el) => {
+    el.textContent = status.text;
+    el.classList.toggle('is-open', status.open);
+    show(el);
+  });
+}
+
+// Bandeau d'annonce
+const announce = document.querySelector('.announce');
+if (announce && CFG.announcement) {
+  announce.querySelector('.announce__text').textContent = CFG.announcement;
+  show(announce);
+}
+
+// Données structurées pour Google (fiche restaurant)
+(() => {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Restaurant',
+    name: 'Sosiji Korean Streetfood',
+    alternateName: '소시지',
+    url: location.origin + location.pathname,
+    logo: new URL('assets/img/logo.png', location.href).href,
+    image: new URL('assets/img/crousty-chikin.webp', location.href).href,
+    servesCuisine: ['Coréenne', 'Street food'],
+    priceRange: 'CHF 6–24',
+    hasMenu: new URL('#menu', location.href).href,
+  };
+  if (CFG.address) data.address = CFG.address;
+  if (CFG.phone) data.telephone = CFG.phone;
+  if (CFG.email) data.email = CFG.email;
+  if (CFG.instagramUrl) data.sameAs = [CFG.instagramUrl];
+  const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  data.openingHoursSpecification = schedule.flatMap((row) => row.slots.map((slot) => {
+    const [opens, closes] = slot.split(/[–-]/).map((t) => t.trim());
+    return { '@type': 'OpeningHoursSpecification', dayOfWeek: row.dow.map((d) => DAYS[d]), opens, closes };
+  }));
+  const ld = document.createElement('script');
+  ld.type = 'application/ld+json';
+  ld.textContent = JSON.stringify(data);
+  document.head.appendChild(ld);
+})();
+
 // Menu mobile
 const nav = document.querySelector('.nav');
 const toggle = document.querySelector('.nav__toggle');

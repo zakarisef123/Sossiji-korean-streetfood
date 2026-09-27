@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mentions légales — Sosiji 소시지</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f2605b">
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="nav">
+    <a href="index.html" class="nav__brand" aria-label="Sosiji — accueil">
+      <img src="assets/img/logo.png" alt="Logo Sosiji Korean Streetfood" width="56" height="56">
+      <span class="nav__word">SOSIJI <span class="ko">소시지</span></span>
+    </a>
+    <a href="index.html" class="btn btn--small">← Retour au site</a>
+  </header>
+
+  <main class="legal">
+    <p class="tag">법적 고지 · Informations légales</p>
+    <h1>Mentions légales</h1>
+
+    <h2>Éditeur du site</h2>
+    <p>
+      <strong data-legal="company">Sosiji Korean Streetfood</strong><br>
+      <span data-legal="owner-line" hidden>Responsable : <span data-legal="owner"></span><br></span>
+      <span data-legal="address"></span><br>
+      <span data-legal="phone-line" hidden>Téléphone : <a data-legal="phone"></a><br></span>
+      <span data-legal="email-line" hidden>E-mail : <a data-legal="email"></a><br></span>
+      <span data-legal="ide-line" hidden>Numéro IDE : <span data-legal="ide"></span></span>
+    </p>
+
+    <h2>Hébergement</h2>
+    <p>Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis.</p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>Les textes, photos, logo et éléments graphiques de ce site appartiennent à Sosiji Korean Streetfood ou sont utilisés avec autorisation. Toute reproduction sans accord préalable est interdite. Les marques des boissons (Henniez, OISHI, Asahi) appartiennent à leurs propriétaires respectifs.</p>
+
+    <h2>Prix et allergènes</h2>
+    <p>Les prix sont indiqués en francs suisses (CHF), TVA incluse, et peuvent changer sans préavis. Les informations sur les allergènes sont disponibles sur demande au restaurant.</p>
+
+    <h1 id="confidentialite" style="margin-top:3rem">Confidentialité</h1>
+    <p>Ce site respecte la loi fédérale sur la protection des données (nLPD).</p>
+    <h2>Données collectées</h2>
+    <p>Le site ne contient aucun formulaire, aucun cookie publicitaire et aucun outil de mesure d'audience. Il retient seulement, dans votre navigateur et pour la durée de la visite, que l'animation d'introduction a déjà été vue. Les polices sont hébergées sur le site lui-même.</p>
+    <p>Comme tout hébergeur, Netlify peut enregistrer des données techniques de connexion (adresse IP, date, pages consultées) pour assurer la sécurité et le bon fonctionnement du site.</p>
+    <h2>Services tiers</h2>
+    <p>La carte de la section « Nous trouver » est fournie par Google Maps : en l'affichant, votre navigateur se connecte aux serveurs de Google. Les liens vers la plateforme de commande en ligne et vers Instagram mènent à des services externes, soumis à leurs propres politiques de confidentialité.</p>
+    <h2>Contact</h2>
+    <p>Pour toute question sur vos données, contactez-nous à l'adresse indiquée ci-dessus.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__row">
+      <img src="assets/img/logo.png" alt="" width="60" height="60">
+      <p>Korean Streetfood · <a href="index.html" style="color:inherit">Retour au site</a></p>
+      <p>© <span id="year"></span> Sosiji</p>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script>
+    (function () {
+      var c = window.SOSIJI || {}, l = c.legal || {};
+      var $ = function (k) { return document.querySelector('[data-legal="' + k + '"]'); };
+      if (l.company) $('company').textContent = l.company;
+      $('address').textContent = c.address || '';
+      if (l.owner) { $('owner').textContent = l.owner; $('owner-line').hidden = false; }
+      if (l.ide) { $('ide').textContent = l.ide; $('ide-line').hidden = false; }
+      if (c.phone) {
+        $('phone').textContent = c.phone;
+        $('phone').href = 'tel:' + c.phone.replace(/[^+\d]/g, '').replace(/^0/, '+41');
+        $('phone-line').hidden = false;
+      }
+      if (c.email) { $('email').textContent = c.email; $('email').href = 'mailto:' + c.email; $('email-line').hidden = false; }
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
